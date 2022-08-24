@@ -67,6 +67,7 @@ import { useStore } from "@/stores/index";
 import { storeToRefs } from "pinia";
 import PlayerInfo from "@/components/UI/PlayerInfo.vue";
 import PlayerVolume from "@/components/UI/PlayerVolume.vue";
+import axios from "axios";
 const store = useStore();
 // global beat and playing values
 const { beat, playing } = storeToRefs(store);
@@ -170,7 +171,7 @@ const setAudioVolume = (newValue: number) => {
   audio.volume = +(newValue / 100).toFixed(2);
 };
 const downloadIncrement = () => {
-  console.log(beat.value.id)
+  axios.get(`http://localhost:8000/api/beat/${beat.value.id}/download`);
 }
 </script>
 <style lang="scss" scoped>

@@ -1,16 +1,17 @@
 <template>
   <div
     data-test="beat"
-    class="box-border flex h-[114px] w-[320px] bg-base-100 rounded-lg cursor-pointer shadow-lg"
+    class="box-border flex h-[105px] w-[320px] bg-base-100 rounded-lg cursor-pointer shadow-lg"
     @mouseenter="showOverlay"
     @mouseleave="hideOverlay"
+    @click="playBeat"
   >
-    <div class="w-[102px] relative py-3 pl-3" @click="playBeat">
+    <div class="w-[93px] relative py-3 pl-3">
       <transition name="overlay">
         <div
           data-test="hovered"
           v-show="hovered"
-          class="play-overlay absolute bg-black bg-opacity-80 w-[90px] h-[90px] rounded-lg flex justify-center items-center"
+          class="play-overlay absolute bg-black bg-opacity-80 w-[81px] h-[81px] rounded-lg flex justify-center items-center"
         >
           <svg
             data-test="pauseIcon"
@@ -64,75 +65,33 @@
         data-test="beatWrap"
         v-if="beat.wrap"
         :src="beat.wrap"
-        class="rounded-lg object-cover box-border w-[90px] h-[90px] shadow-lg"
+        class="rounded-lg object-cover box-border w-[81px] h-[81px] shadow-lg"
       />
       <LoadingShimmer v-else class="rounded-lg object-cover box-border" />
     </div>
     <div
-      class="borderedPart box-border p-3 flex-1 flex flex-col justify-between rounded-r-lg gap-1"
+      class="borderedPart box-border p-3 flex-1 flex flex-col justify-between rounded-r-lg"
     >
-      <div
-        class="flex text-xl text-center text-black font-semibold text-2xl"
-        v-if="beat.name"
-      >
-        {{ beat.name }}
+      <div class="flex text-xl" v-if="beat.name">
+        <div class="w-[55px] text-secondary">Name</div>
+        <div class="rounded-lg text-center text-black flex-1 flex items-center">
+          <div data-test="beatName" class="flex-1">{{ beat.name }}</div>
+        </div>
       </div>
       <LoadingShimmer class="rounded-lg h-5" v-else />
-      <div class="flex gap-1 flex-wrap" v-if="beat.artist && beat.bpm">
-        <router-link
-          title="Type"
-          :to="`/beats?ordering=-id&artist=${beat.artist.id}`"
-          class="min-w-[75px] btn btn-xs shadow-md bg-primary text-white border-none hover:from-black"
-        >
-          {{ beat.artist.name }}
-        </router-link>
-        <router-link
-          title="BPM"
-          :to="`/beats?ordering=-id&bpm=${beat.bpm}`"
-          class="flex-1 btn btn-xs shadow-md bg-primary text-white border-none"
-        >
-          {{ beat.bpm }}BPM
-        </router-link>
-        <div
-          title="Number of listenings"
-          class="btn btn-xs shadow-md bg-primary text-white border-none gap-[2px] hover:bg-primary"
-        >
-          <svg
-            width="9px"
-            xmlns="http://www.w3.org/2000/svg"
-            class="ionicon"
-            viewBox="0 -20 512 512"
-          >
-            <path
-              d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"
-              fill="white"
-              stroke="white"
-              stroke-miterlimit="10"
-              stroke-width="48"
-            />
-          </svg>
-          {{ beat.listenings }}
+      <div class="flex text-xl" v-if="beat.artist">
+        <div class="w-[55px] text-secondary">Type</div>
+        <div class="rounded-lg text-center text-black flex-1 flex items-center">
+          <div data-test="beatArtist" class="flex-1">
+            {{ beat.artist.name }}
+          </div>
         </div>
-        <div
-          title="Number of downloads"
-          class="btn btn-xs shadow-md bg-accent text-white border-none gap-[2px] hover:bg-accent"
-        >
-          {{ beat.downloads }}
-          <svg
-            width="13px"
-            xmlns="http://www.w3.org/2000/svg"
-            class="ionicon"
-            viewBox="0 -30 512 512"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="48"
-              d="M112 268l144 144 144-144M256 392V100"
-            />
-          </svg>
+      </div>
+      <LoadingShimmer class="rounded-lg h-5" v-else />
+      <div class="flex text-xl" v-if="beat.bpm">
+        <div class="w-[55px] text-secondary">Bpm</div>
+        <div class="rounded-lg text-center text-black flex-1 flex items-center">
+          <div data-test="beatBpm" class="flex-1">{{ beat.bpm }}</div>
         </div>
       </div>
       <LoadingShimmer class="rounded-lg h-5" v-else />
@@ -148,8 +107,6 @@ interface Beat {
   id?: number | null;
   name?: string;
   bpm?: number | null;
-  downloads?: number | null;
-  listenings?: number | null;
   artist?: Artist;
   mp3?: string;
   wave?: string;
@@ -159,13 +116,11 @@ interface Beat {
 <script setup lang="ts">
 import LoadingShimmer from "@/components/UI/LoadingShimmer.vue";
 import { ref, onMounted, watch } from "vue";
-import { useRoute } from "vue-router";
 // global store
 import { useStore } from "@/stores/index";
 import { storeToRefs } from "pinia";
 const store = useStore();
 const props = defineProps<{ beat: Beat }>();
-const route = useRoute();
 // global playing state
 const { playing } = storeToRefs(store);
 // overlay value
