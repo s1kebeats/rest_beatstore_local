@@ -15,7 +15,8 @@ class BeatSerializer( serializers.HyperlinkedModelSerializer ):
         model = Beat
         fields = [
             # Info
-            'id', 'name', 'bpm', 
+            'id', 'name', 'bpm',
+            'downloads', 'listenings',
             'artist',
             # Files
             'wrap', 'wave', 'mp3',

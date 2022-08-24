@@ -47,6 +47,7 @@
         >
           <PlayerVolume @update-audio-volume="setAudioVolume" />
           <a
+            @click="downloadIncrement"
             data-test="downloadLink"
             download=""
             class="block w-[26px] h-[26px] download drop-shadow-md"
@@ -168,6 +169,9 @@ const setAudioVolume = (newValue: number) => {
   // volume range has max=100 for the ease of perception
   audio.volume = +(newValue / 100).toFixed(2);
 };
+const downloadIncrement = () => {
+  console.log(beat.value.id)
+}
 </script>
 <style lang="scss" scoped>
 .play {

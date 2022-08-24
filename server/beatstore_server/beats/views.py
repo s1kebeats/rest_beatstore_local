@@ -2,6 +2,11 @@ from .serializers import ArtistSerializer, BeatSerializer
 from .models import Artist, Beat
 
 from rest_framework import filters, generics
+from rest_framework.views import APIView
+
+from django.http import Http404
+from rest_framework import status
+from rest_framework.response import Response
 
 # Create your views here.
 class ArtistListView(generics.ListAPIView):
@@ -30,3 +35,22 @@ class BeatListView(generics.ListAPIView):
             queryset = queryset.filter( name__icontains=name )
 
         return queryset
+
+class BeatView(APIView):
+    
+    def get_object(self, id):
+        try:
+            return Beat.objects.get( id=id )
+        except Beat.DoesNotExist:
+            raise Http404
+
+    def get(self, request, id, opt=''):
+        snippet = self.get_object(id)
+        if opt == 'download':
+            snippet.incrementDownloads()
+            return Response({ 'done' }, status=status.HTTP_200_OK)
+        if opt == 'play':
+            snippet.incrementListenings()
+            return Response({ 'done' }, status=status.HTTP_200_OK)
+        serializer = BeatSerializer(snippet)
+        return Response(serializer.data, status=status.HTTP_200_OK)
