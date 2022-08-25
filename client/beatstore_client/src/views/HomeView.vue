@@ -2,9 +2,8 @@
   <div>
     <section class="flex flex-col items-center min-h-[calc(100vh-90px)]">
       <BeatstoreLanding />
-      <BestBeats class="flex-1" />
+      <BestBeats />
     </section>
-    <BeatstoreUsage />
   </div>
 </template>
 <script setup lang="ts">

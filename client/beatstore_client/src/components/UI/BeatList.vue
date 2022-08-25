@@ -1,6 +1,6 @@
 <template>
   <div data-test="beatList" class="flex flex-col w-[1648px] responsive">
-    <div class="flex flex-wrap gap-3 select-none" v-show="list.length">
+    <div class="flex flex-wrap gap-5 select-none" v-show="list.length">
       <BeatstoreBeat
         v-for="item in list"
         :key="item.id ? item.id : 0"

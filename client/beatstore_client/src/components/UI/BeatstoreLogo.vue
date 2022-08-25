@@ -7,8 +7,8 @@
     data-test="logo"
   >
     <router-link title="Home" to="/" class="flex items-center gap-2">
-      <img class="h-[27px] drop-shadow-sm" src="@/assets/images/logo.svg" />
-      <span class="text-[22px] font-['Poppins']"> s1kebeats </span>
+      <img class="h-[28px] drop-shadow-sm" src="@/assets/images/logo.svg" />
+      <span class="text-[23px] font-['Poppins']"> s1kebeats </span>
     </router-link>
   </div>
 </template>
