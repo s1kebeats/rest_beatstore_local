@@ -1,22 +1,22 @@
 <template>
   <div
     data-test="beat"
-    class="box-border flex h-[114px] w-[320px] bg-base-100 rounded-lg cursor-pointer shadow-lg"
+    class="box-border flex flex-col w-[200px] bg-base-100 rounded-lg cursor-pointer"
     @mouseenter="showOverlay"
     @mouseleave="hideOverlay"
   >
-    <div class="w-[102px] relative py-3 pl-3" @click="playBeat">
+    <div class="w-full h-[200px] relative mb-3" @click="playBeat">
       <transition name="overlay">
         <div
           data-test="hovered"
           v-show="hovered"
-          class="play-overlay absolute bg-black bg-opacity-80 w-[90px] h-[90px] rounded-lg flex justify-center items-center"
+          class="play-overlay absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
         >
           <svg
             data-test="pauseIcon"
             v-show="store.beat.mp3 === beat.mp3 && copyHovered && store.playing"
             xmlns="http://www.w3.org/2000/svg"
-            class="ionicon w-[50px]"
+            class="ionicon w-[60px]"
             viewBox="0 0 512 512"
             fill="#FFFFFF"
           >
@@ -31,7 +31,7 @@
               store.beat.mp3 === beat.mp3 && !copyHovered && store.playing
             "
             xmlns="http://www.w3.org/2000/svg"
-            class="ionicon w-[40px]"
+            class="ionicon w-[50px]"
             viewBox="0 0 512 512"
             fill="#FFFFFF"
           >
@@ -49,7 +49,7 @@
               (store.beat.mp3 && store.beat.mp3 !== beat.mp3) || !store.playing
             "
             xmlns="http://www.w3.org/2000/svg"
-            class="ionicon w-[50px]"
+            class="ionicon w-[60px]"
             viewBox="0 0 512 512"
             fill="#FFFFFF"
           >
@@ -64,11 +64,65 @@
         data-test="beatWrap"
         v-if="beat.wrap"
         :src="beat.wrap"
-        class="rounded-lg object-cover box-border w-[90px] h-[90px] shadow-lg"
+        class="rounded-lg object-cover box-border w-full h-full shadow-lg"
       />
-      <LoadingShimmer v-else class="rounded-lg object-cover box-border" />
+      <LoadingShimmer v-else class="rounded-lg object-cover box-border mb-3" />
     </div>
-    <div
+    <div class="flex gap-1 mb-2" v-if="beat.bpm">
+        <div
+          title="BPM"
+          class="flex-1 px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px]"
+        >
+          {{ beat.bpm }}BPM
+        </div>
+        <div
+          title="Number of listenings"
+          class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px]"
+        >
+          <svg
+            width="9px"
+            xmlns="http://www.w3.org/2000/svg"
+            class="ionicon"
+            viewBox="0 -20 512 512"
+          >
+            <path
+              d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"
+              fill="white"
+              stroke="white"
+              stroke-miterlimit="10"
+              stroke-width="48"
+            />
+          </svg>
+          {{ beat.listenings }}
+        </div>
+        <div
+          title="Number of downloads"
+          class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-green-500 text-white flex justify-center items-center gap-[2px]"
+        >
+          {{ beat.downloads }}
+          <svg
+            width="13px"
+            xmlns="http://www.w3.org/2000/svg"
+            class="ionicon"
+            viewBox="0 -30 512 512"
+          >
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="48"
+              d="M112 268l144 144 144-144M256 392V100"
+            />
+          </svg>
+        </div>
+    </div>
+    <LoadingShimmer v-else class="rounded-lg h-[20px] box-border mb-2" />
+    <div v-if="beat.name" class="text-black font-semibold text-2xl mb-1">{{ beat.name }}</div>
+    <LoadingShimmer v-else class="rounded-lg h-[32px] box-border mb-1" />
+    <div v-if="beat.artist" class="text-black text-md">{{ beat.artist.name }}</div>
+    <LoadingShimmer v-else class="rounded-lg h-[24px] box-border" />
+    <!-- <div
       class="borderedPart box-border p-3 flex-1 flex flex-col justify-between rounded-r-lg gap-1"
     >
       <div
@@ -136,7 +190,7 @@
         </div>
       </div>
       <LoadingShimmer class="rounded-lg h-5" v-else />
-    </div>
+    </div> -->
   </div>
 </template>
 <script lang="ts">

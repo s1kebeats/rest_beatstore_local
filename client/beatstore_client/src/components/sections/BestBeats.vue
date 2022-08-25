@@ -1,7 +1,7 @@
 <template>
-  <section>
-    <h1 class="text-center text-xl font-semibold my-5 select-none text-black">
-      Hot 10
+  <section class="py-5">
+    <h1 class="text-left text-xl font-semibold my-5 select-none text-black">
+      Most popular
     </h1>
     <div class="flex justify-center">
       <!-- <transition name="overlay"> -->
@@ -9,18 +9,9 @@
       <!-- </transition> -->
       <BeatList
         v-if="loading"
-        :list="[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]"
+        :list="[{}, {}, {}, {}, {}, {}, {}]"
         data-test="placeholder"
       />
-    </div>
-    <div class="w-full text-center mb-[100px] mt-3 select-none">
-      <router-link
-        to="/beats?ordering=-id"
-        title="View all beats"
-        class="btn bg-black text-white hover:bg-black btn-xs w-[1648px] shadow-lg hover:brightness-95 transition-all responsive"
-      >
-        View all beats
-      </router-link>
     </div>
   </section>
 </template>
@@ -48,7 +39,7 @@ const bestBeatsList = ref<Beat[]>([]);
 onMounted(async () => {
   loading.value = true;
   bestBeatsList.value = (
-    await axios.get("http://localhost:8000/api/beats/?ordering=-id")
+    await axios.get("http://localhost:8000/api/beats/?ordering=-listenings")
   ).data.results.slice(0, 10);
   setTimeout(() => (loading.value = false), 250);
 });

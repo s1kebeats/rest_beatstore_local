@@ -4,7 +4,7 @@
       title="Home"
       to="/"
       :class="
-        'font-semibold text-white hover:brightness-95 transition-all ' +
+        'text-sm text-black transition-all ' +
         classes.link +
         (store.overlay ? '' : ' 1368:text-black ')
       "
@@ -16,7 +16,7 @@
       title="Beats"
       to="/beats"
       :class="
-        'font-semibold text-white hover:brightness-95 transition-all ' +
+        'text-sm text-black transition-all ' +
         classes.link +
         (store.overlay ? '' : ' 1368:text-black ')
       "
@@ -28,7 +28,7 @@
       title="Terms of use"
       to="#usage"
       :class="
-        'font-semibold text-white hover:brightness-95 transition-all ' +
+        'text-sm text-black transition-all ' +
         classes.link +
         (store.overlay ? '' : ' 1368:text-black ')
       "

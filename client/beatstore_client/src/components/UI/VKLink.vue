@@ -3,7 +3,7 @@
     href="https://vk.com/s1kebeats"
     target="_blank"
     title="VK Group"
-    class="vk inline-block w-[20px] h-full select-none drop-shadow-md"
+    class="vk inline-block w-[25px] h-[25px] select-none drop-shadow-md"
   >
     &nbsp;
   </a>
@@ -11,7 +11,8 @@
 <script setup lang="ts"></script>
 <style lang="scss" scoped>
 .vk {
-  background: center no-repeat url("@/assets/images/vk.svg");
+  background: no-repeat url("@/assets/images/vk.svg");
+  background-position: 3px 4px;
   background-size: 18px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="main flex flex-col min-h-screen">
+  <div class="main bg-[#ffffff] flex flex-col min-h-screen">
     <BeatstoreOverlayMain />
     <BeatstoreHeader />
     <main
@@ -21,8 +21,7 @@ import BeatstoreFooter from "@/components/sections/BeatstoreFooter.vue";
 </script>
 <style lang="scss">
 .main {
-  background: no-repeat url("@/assets/images/bg.png");
-  background-size: cover;
+  font-family: 'Inter';
 }
 .locked {
   overflow-y: hidden;

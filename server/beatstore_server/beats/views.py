@@ -16,7 +16,7 @@ class ArtistListView(generics.ListAPIView):
 class BeatListView(generics.ListAPIView):
     serializer_class = BeatSerializer
     filter_backends = [filters.OrderingFilter]
-    ordering_fields = ['id']
+    ordering_fields = ['id', 'listenings']
 
     def get_queryset(self):
         queryset = Beat.objects.all()
