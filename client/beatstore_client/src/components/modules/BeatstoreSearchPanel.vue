@@ -1,19 +1,10 @@
 <template>
   <div
     data-test="searchPanel"
-    class="flex justify-center box-border w-[1520px] mb-5 responsive"
+    class="flex justify-center box-border w-[1520px] responsive pb-5"
   >
-    <form class="w-full flex gap-5 search">
-      <fieldset
-        class="flex-1 flex gap-5 max-w-[440px] 1700:max-w-[300px] field"
-      >
-        <fieldset class="bpm flex-1 max-w-[120px] 1700:max-w-[80px]">
-          <label
-            for="bpm"
-            class="text-left text-base text-black font-semibold mb-2 select-none"
-          >
-            Bpm
-          </label>
+    <form class="w-full flex flex-wrap gap-3">
+        <fieldset class="flex items-center gap-1 bpm flex-1 min-w-[100px] max-w-[100px] 1700:min-w-[100px]">
           <input
             id="bpm"
             data-test="bpmInput"
@@ -22,39 +13,31 @@
             name="bpm"
             min="1"
             max="300"
-            placeholder="s1ke"
+            placeholder="1"
             :value="searchQuery.bpm"
             @input.prevent="debounceInputBpm"
-            class="w-full input input-xs border-none focus:outline-none text-black shadow-lg"
+            class="w-full input input-xs input-bordered input-primar focus:outline-none focus:border-base-300 text-black"
           />
-        </fieldset>
-        <fieldset class="flex-1 max-w-[300px] 1700:max-w-[200px] field">
           <label
-            for="name"
-            class="text-left text-base text-black font-semibold mb-2 select-none"
+            for="bpm"
+            class="text-sm text-black"
           >
-            Name
+            BPM
           </label>
+        </fieldset>
+        <fieldset class="flex items-center gap-2 flex-1 min-w-[170px] max-w-[200px] 1700:min-w-[170px] field">
           <input
             id="name"
             data-test="nameInput"
             type="text"
-            placeholder="beats"
+            placeholder="name"
             name="nm"
             :value="searchQuery.name"
             @input="debounceInputName"
-            class="w-full input input-xs border-none focus:outline-none text-black shadow-lg"
+            class="w-full input input-xs input-bordered input-primar focus:outline-none focus:border-base-300 text-black"
           />
         </fieldset>
-      </fieldset>
-      <fieldset class="flex-1">
-        <p
-          class="text-left text-base text-black font-semibold mb-[10px] select-none"
-        >
-          Type
-        </p>
-        <BeatstoreArtists @update-artist-query="updateArtistQuery" />
-      </fieldset>
+      <BeatstoreArtists @update-artist-query="updateArtistQuery" />
     </form>
   </div>
 </template>

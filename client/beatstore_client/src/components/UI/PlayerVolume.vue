@@ -2,7 +2,7 @@
   <div
     @mouseenter="toggleThumb(true)"
     @mouseleave="toggleThumb(false)"
-    class="flex items-center gap-2 600:hidden"
+    class="flex items-center gap-1 600:hidden"
   >
     <CustomRange
       :thumb-state="thumbState"
@@ -10,7 +10,7 @@
       :value="audioVolume"
       :max="100"
       @update-value="updateAudioVolume"
-      class="w-[65px] drop-shadow-md mx-[6px]"
+      class="w-[65px] h-[2px] mx-[6px]"
     />
     <button
       data-test="volumeButton"
@@ -69,10 +69,10 @@ watch(audioVolume, (value) => {
 <style lang="scss">
 .volume {
   background: center no-repeat url("@/assets/images/volume-medium.svg");
-  background-size: 24px;
+  background-size: 26px;
   &.muted {
     background: -3px center no-repeat url("@/assets/images/volume-off.svg");
-    background-size: 24px;
+    background-size: 26px;
   }
 }
 </style>

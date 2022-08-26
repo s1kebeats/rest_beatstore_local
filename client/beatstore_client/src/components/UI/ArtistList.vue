@@ -1,16 +1,11 @@
 <template>
-  <ul
-    class="box-border w-full flex flex-wrap items-center gap-5"
-    data-test="artistList"
-  >
     <BeatstoreArtist
       v-for="artist in artistList"
       :artist="artist"
       :key="artist.id ? artist.id : 0"
       @select-artist="selectArtist"
-      :class="artistQuery.includes(artist.id) ? 'bg-black' : 'bg-gradient-to-r'"
+      :class="artistQuery.includes(artist.id) ? 'bg-black' : 'bg-primary'"
     />
-  </ul>
 </template>
 <script lang="ts">
 interface Artist {

@@ -2,16 +2,20 @@
   <div
     class="w-[1520px] flex justify-between items-center relative z-2 responsive"
   >
-    <h1 class="text-left text-xl font-semibold my-5 text-black">Beats</h1>
+    <h1 class="text-left text-xl font-semibold mt-5 mb-4 text-black">Beats</h1>
     <div class="flex items-center gap-1">
       <div class="relative">
         <button
           ref="orderingButton"
           data-test="orderingButton"
-          @click="toggleOrders"
+          @click="toggleOrderings"
+          @focusout="hideOrderings"
           class="flex hover:text-black px-2 rounded-lg text-sm h-[24px] items-center gap-1"
         >
-          <span data-test="orderingText">
+          <span
+            data-test="orderingText"
+            :class="showOrderings ? 'text-black' : ''"
+          >
             {{ searchQuery.ordering === "-id" ? "New first" : "Popular first" }}
           </span>
           <svg
@@ -19,6 +23,7 @@
             data-test="orderingDown"
             xmlns="http://www.w3.org/2000/svg"
             class="ionicon w-[16px] transition-all"
+            :class="showOrderings ? 'rotate-180' : ''"
             viewBox="0 -40 512 512"
           >
             <path
@@ -32,14 +37,12 @@
           </svg>
         </button>
         <div
-          tabindex="0"
-          @focusout="hideOrderings"
-          ref="orderings"
-          v-show="ordersState"
-          class="absolute w-[115px] bg-base-200 rounded-md p-2 flex flex-col gap-1 shadow-md right-0"
+          ref="orderingsPanel"
+          v-show="showOrderings"
+          class="absolute w-[115px] border-full border-[1px] bg-base-100 rounded-md p-2 flex flex-col gap-1 shadow-md right-0"
         >
           <button
-            ref="order1"
+            ref="orderOption1"
             @click="changeOrder('-listenings')"
             class="w-full flex hover:text-black px-2 rounded-lg text-sm items-center gap-1"
             :class="searchQuery.ordering == '-listenings' ? 'text-black' : ''"
@@ -47,7 +50,7 @@
             Popular first
           </button>
           <button
-            ref="order2"
+            ref="orderOption2"
             @click="changeOrder('-id')"
             class="w-full flex hover:text-black px-2 rounded-lg text-sm items-center gap-1"
             :class="searchQuery.ordering == '-id' ? 'text-black' : ''"
@@ -122,9 +125,28 @@ const searchQuery = reactive<searchQuery>({
 const changeOrder = (order: string): void => {
   if (searchQuery.ordering === order) return;
   searchQuery.ordering = order;
-  toggleOrders(false);
+  showOrderings.value = false;
   // update query => re-order data
   updateSearchQuery(searchQuery);
+};
+
+const orderOption1 = ref();
+const orderOption2 = ref();
+
+const showOrderings = ref(false);
+const orderingsPanel = ref();
+const toggleOrderings = () => {
+  showOrderings.value = !showOrderings.value;
+};
+const hideOrderings = () => {
+  if (
+    document.activeElement !== orderOption1.value &&
+    document.activeElement !== orderOption2.value
+  ) {
+    setTimeout(() => {
+      showOrderings.value = false;
+    }, 100);
+  }
 };
 // forming and submitting search query
 const updateSearchQuery = (newQuery: stringQuery): void => {
@@ -136,23 +158,6 @@ const updateSearchQuery = (newQuery: stringQuery): void => {
   Object.assign(searchQuery, newQuery);
   emit("search", `?${new URLSearchParams(searchQuery).toString()}`);
 };
-const orderingSvg = ref();
-const orderings = ref();
-const orderingButton = ref();
-const ordersState = ref(false);
-const toggleOrders = (value?: boolean) => {
-  if (value !== undefined) ordersState.value = value;
-  else { ordersState.value = !ordersState.value; }
-  orderingButton.value.classList.toggle("text-black");
-  orderingSvg.value.classList.toggle("rotate-180");
-};
-const order1 = ref();
-const order2 = ref();
-const hideOrderings = () => {
-  if (document.activeElement !== order1.value && document.activeElement !== order2.value) {
-    toggleOrders(false);
-  }
-}
 </script>
 <style lang="scss">
 .beats-wrapper {

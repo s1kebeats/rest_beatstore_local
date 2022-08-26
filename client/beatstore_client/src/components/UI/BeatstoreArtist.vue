@@ -3,7 +3,7 @@
     v-if="artist.id"
     data-test="artist"
     @click.prevent="selectArtist(artist.id ? artist.id : null)"
-    class="btn btn-xs from-primary to-[#C165CC] border-none text-base-100 min-w-[120px] flex-1 shadow-lg hover:brightness-95 transition-all"
+    class="flex-1 px-2 h-[24px] text-xs rounded-lg shadow-md text-white flex justify-center items-center min-w-[90px] max-w-[100px] box-border hover:bg-black transition-all"
   >
     {{ artist.name }}
   </button>

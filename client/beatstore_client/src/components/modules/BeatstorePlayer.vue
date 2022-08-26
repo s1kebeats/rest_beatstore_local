@@ -6,7 +6,7 @@
       v-if="store.beat.mp3"
       @mouseenter="toggleThumb(true)"
       @mouseleave="toggleThumb(false)"
-      class="bg-base-100 w-full h-[50px] select-none shadow-[0px_0px_25px_5px_rgba(0,0,0,.25)]"
+      class="bg-black w-full h-[45px] flex flex-col items-center"
     >
       <CustomRange
         @toggle-thumb="focusThumb"
@@ -14,23 +14,23 @@
         @set-value="setAudioTime"
         :thumb-state="thumbState"
         :max="audioDuration - 1"
-        class="player__timeline drop-shadow-md"
+        class="player__timeline"
         :value="timelineUp ? audioTimeOnUp : audioTimeOnDown"
       />
-      <div class="player__controls flex h-[47px] px-5 items-center 600:px-2">
+      <div class="responsive flex h-[42px] w-[1520px] px-5 items-center 600:px-2">
         <div
-          class="w-[150px] flex h-full items-center gap-5 600:gap-1 600:w-[80px]"
+          class="w-[150px] flex h-full items-center gap-2 600:gap-1 600:w-[80px]"
         >
           <button
             data-test="playPauseButton"
             @click="store.playPause()"
             :class="
-              'play w-[26px] h-[26px] drop-shadow-md' +
+              'play w-[25px] h-[25px] drop-shadow-md' +
               (store.playing ? ' pause' : '')
             "
           ></button>
           <div
-            class="flex items-center justify-center h-full w-[65px] text-xs 600:text-[.6rem] 600:w-[51px]"
+            class="flex items-center justify-center h-full w-[65px] text-xs text-white 600:text-[.6rem] 600:w-[51px]"
           >
             <span class="text-center w-[30px] 600:w-[22px]">
               {{ audioCurrentTimeOutput }}
@@ -50,7 +50,7 @@
             @click="downloadIncrement"
             data-test="downloadLink"
             download=""
-            class="block w-[26px] h-[26px] download drop-shadow-md"
+            class="block w-[25px] h-[25px] download drop-shadow-md"
             :href="beat.wave"
           ></a>
         </div>
@@ -177,15 +177,15 @@ const downloadIncrement = () => {
 <style lang="scss" scoped>
 .play {
   background: center no-repeat url("@/assets/images/play.svg");
-  background-size: 26px;
+  background-size: 30px;
   &.pause {
     background: center no-repeat url("@/assets/images/pause.svg");
-    background-size: 26px;
+    background-size: 30px;
   }
 }
 .download {
   background: center no-repeat url("@/assets/images/download.svg");
-  background-size: 26px;
+  background-size: 30px;
 }
 
 .player-enter-active,

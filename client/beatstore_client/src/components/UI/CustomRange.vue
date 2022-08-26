@@ -6,7 +6,7 @@
     @focus="toggleThumb(true)"
     @focusout="toggleThumb(false)"
     tabindex="0"
-    class="custom-range relative cursor-pointer h-[3px] w-full box-border flex items-center bg-base-200 focus:outline-none"
+    class="custom-range relative cursor-pointer h-[3px] w-full box-border flex items-center bg-base-300 focus:outline-none"
   >
     <div
       data-test="beforeThumb"
