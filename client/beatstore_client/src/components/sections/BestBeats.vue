@@ -1,12 +1,18 @@
 <template>
   <section class="py-5">
-    <h1 class="text-left text-xl font-semibold my-5 select-none text-black">
-      Most popular
-    </h1>
+    <div class="flex items-center justify-between">
+      <h1 class="text-left text-xl font-semibold my-5 text-black">
+        Most popular
+      </h1>
+      <router-link
+        class="hover:text-black transition-all"
+        to="/beats?ordering=-id"
+        >See all beats</router-link
+      >
+    </div>
+
     <div class="flex justify-center">
-      <!-- <transition name="overlay"> -->
       <BeatList v-show="!loading" :list="bestBeatsList" data-test="beatlist" />
-      <!-- </transition> -->
       <BeatList
         v-if="loading"
         :list="[{}, {}, {}, {}, {}, {}, {}]"
@@ -40,7 +46,7 @@ onMounted(async () => {
   loading.value = true;
   bestBeatsList.value = (
     await axios.get("http://localhost:8000/api/beats/?ordering=-listenings")
-  ).data.results.slice(0, 10);
+  ).data.results.slice(0, 7);
   setTimeout(() => (loading.value = false), 250);
 });
 </script>

@@ -2,14 +2,12 @@
   <div class="main bg-[#ffffff] flex flex-col min-h-screen">
     <BeatstoreOverlayMain />
     <BeatstoreHeader />
-    <main
-      class="main relative grow flex flex-col bg-cover bg-no-repeat pb-[75px]"
-    >
+    <main class="main relative grow flex flex-col bg-cover bg-no-repeat">
       <router-view></router-view>
     </main>
+    <BeatstoreFooter class="main-footer" />
     <div class="fixed bottom-0 w-full">
       <BeatstorePlayer />
-      <BeatstoreFooter class="main-footer" />
     </div>
   </div>
 </template>
@@ -21,7 +19,7 @@ import BeatstoreFooter from "@/components/sections/BeatstoreFooter.vue";
 </script>
 <style lang="scss">
 .main {
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 .locked {
   overflow-y: hidden;

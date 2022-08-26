@@ -4,7 +4,7 @@
       title="Home"
       to="/"
       :class="
-        'text-sm text-black transition-all ' +
+        'text-sm font-medium text-black transition-all ' +
         classes.link +
         (store.overlay ? '' : ' 1368:text-black ')
       "
@@ -16,7 +16,7 @@
       title="Beats"
       to="/beats"
       :class="
-        'text-sm text-black transition-all ' +
+        'text-sm font-medium text-black transition-all ' +
         classes.link +
         (store.overlay ? '' : ' 1368:text-black ')
       "
@@ -26,9 +26,9 @@
     </router-link>
     <router-link
       title="Terms of use"
-      to="#usage"
+      to="/#usage"
       :class="
-        'text-sm text-black transition-all ' +
+        'text-sm font-medium text-black transition-all ' +
         classes.link +
         (store.overlay ? '' : ' 1368:text-black ')
       "

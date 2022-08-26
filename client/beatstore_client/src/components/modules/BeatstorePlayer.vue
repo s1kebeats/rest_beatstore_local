@@ -172,7 +172,7 @@ const setAudioVolume = (newValue: number) => {
 };
 const downloadIncrement = () => {
   axios.get(`http://localhost:8000/api/beat/${beat.value.id}/download`);
-}
+};
 </script>
 <style lang="scss" scoped>
 .play {

@@ -17,8 +17,20 @@
           {{ beat.name }}
         </div>
         <div class="text-xs 600:hidden text-white flex items-center gap-1">
-          <router-link title="Type" :to="`/beats?ordering=-id&artist=${beat.artist!.id}`" data-test="playerBeatArtist" class="bg-primary shadow-md rounded-md px-2 h-[20px] flex items-center hover:bg-black transition-all">{{ beat.artist!.name }}</router-link>
-          <router-link title="BPM" :to="`/beats?ordering=-id&bpm=${beat.bpm}`" data-test="playerBeatBpm" class="bg-accent shadow-md rounded-md px-2 h-[20px] flex items-center hover:bg-black transition-all">{{ beat.bpm }}BPM</router-link>
+          <router-link
+            title="Type"
+            :to="`/beats?ordering=-id&artist=${beat.artist!.id}`"
+            data-test="playerBeatArtist"
+            class="bg-primary shadow-md rounded-md px-2 h-[20px] flex items-center hover:bg-black transition-all"
+            >{{ beat.artist!.name }}</router-link
+          >
+          <router-link
+            title="BPM"
+            :to="`/beats?ordering=-id&bpm=${beat.bpm}`"
+            data-test="playerBeatBpm"
+            class="bg-accent shadow-md rounded-md px-2 h-[20px] flex items-center hover:bg-black transition-all"
+            >{{ beat.bpm }}BPM</router-link
+          >
         </div>
       </div>
     </div>

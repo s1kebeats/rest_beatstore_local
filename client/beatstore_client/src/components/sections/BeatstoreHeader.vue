@@ -1,6 +1,6 @@
 <template>
   <header
-    class="w-full h-[60px] box-border border-b border-base-200 flex items-center gap-[20px] px-[20px] font-medium text-center select-none"
+    class="w-full h-[60px] box-border border-b border-base-200 flex items-center gap-[20px] px-[20px] text-center select-none"
   >
     <BeatstoreLogo class="600:flex-1" />
     <slot>

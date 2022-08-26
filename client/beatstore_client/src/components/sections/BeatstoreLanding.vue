@@ -1,9 +1,9 @@
 <template>
-  <section class="landing border-b flex items-center justify-center w-full py-[200px] 600:py-[10px]">
-    <div class="w-[1648px] responsive flex items-center justify-center">
-      <h1 class="text-5xl text-black font-semibold">
-        Free type beats by
-      </h1>
+  <section
+    class="landing select-none border-b flex items-center justify-center w-full py-[200px] 600:py-[10px]"
+  >
+    <div class="w-[1520px] responsive flex items-center justify-center">
+      <h1 class="text-5xl text-black font-semibold">Free type beats by</h1>
       <div class="flex-1 flex justify-center items-center gap-4">
         <img class="h-[80px] drop-shadow-sm" src="@/assets/images/logo.svg" />
         <span class="text-black text-7xl font-['Poppins']"> s1kebeats </span>
@@ -27,14 +27,17 @@
         </div> -->
       </div>
     </div>
-
   </section>
 </template>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 <style lang="scss">
 .landing {
-  background: linear-gradient(70deg,  rgba(243,239,252,1) 10%, rgba(243,239,252,1) 60%, rgba(121,69,252,1) 100%);
+  background: linear-gradient(
+    70deg,
+    rgb(243, 239, 252) 10%,
+    rgba(243, 239, 252, 1) 60%,
+    rgba(121, 69, 252, 1) 100%
+  );
 }
 .vk {
   background: no-repeat url("@/assets/images/vk-black.svg");

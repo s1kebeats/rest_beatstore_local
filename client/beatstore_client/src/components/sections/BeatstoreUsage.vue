@@ -1,21 +1,41 @@
 <template>
-  <section id="usage" class="flex flex-col items-center mb-[68px]">
-    <h1 class="text-xl font-semibold text-white my-5 select-none">
-      Terms of use
-    </h1>
-    <div
-      class="flex flex-col items-center box-border p-5 rounded-lg bg-base-100 drop-shadow-lg 700:w-[90%]"
+  <section
+    id="usage"
+    class="flex flex-col items-start w-[1520px] responsive py-5"
+  >
+    <h1
+      @click="toggleUsage"
+      class="cursor-pointer flex items-center gap-[3px] text-left text-xl font-semibold my-5 text-black w-full"
     >
-      <p class="text-justify text-lg select-none text-black">
-        All beats are free to use, must credit me in the name of your song:
-      </p>
-      <div class="mt-5 w-[200px] bg-base-300 rounded-lg">
-        <img
-          alt="Write 'prod. by s1kebeats' in the name of your song"
-          src="@/assets/images/credit.png"
+      Terms of use
+      <svg
+        ref="icon"
+        xmlns="http://www.w3.org/2000/svg"
+        class="ionicon w-[18px] transition-all"
+        viewBox="0 -40 512 512"
+      >
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="48"
+          d="M184 112l144 144-144 144"
         />
-      </div>
-    </div>
+      </svg>
+    </h1>
+    <p v-show="showUsage" class="text-md select-none text-black w-[300px]">
+      All beats are free to use, must credit me in the name of your song:
+      <span class="font-semibold">"prod. by s1kebeats"</span>
+    </p>
   </section>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+const showUsage = ref(false);
+const icon = ref();
+const toggleUsage = () => {
+  showUsage.value = !showUsage.value;
+  icon.value.classList.toggle("rotate-90");
+};
+</script>

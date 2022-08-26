@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex-1 flex flex-col items-center pb-[50px] min-h-[calc(100vh-90px)] select-none"
+    class="flex-1 flex flex-col items-center pb-[50px] min-h-[calc(100vh-90px)]"
   >
     <BeatstoreSearch @search="updateQuery" />
     <BeatList class="flex-1" v-show="!loading" :list="beatList" />

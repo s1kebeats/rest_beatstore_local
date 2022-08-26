@@ -1,7 +1,7 @@
 <template>
   <div
     data-test="searchPanel"
-    class="flex justify-center box-border w-[1648px] mb-5 responsive"
+    class="flex justify-center box-border w-[1520px] mb-5 responsive"
   >
     <form class="w-full flex gap-5 search">
       <fieldset

@@ -1,13 +1,17 @@
 <template>
   <div
     data-test="beat"
-    class="box-border flex flex-col w-[200px] bg-base-100 rounded-lg cursor-pointer"
+    class="box-border flex flex-col w-[200px] bg-base-100 rounded-lg"
     @mouseenter="showOverlay"
     @mouseleave="hideOverlay"
   >
-    <div class="w-full h-[200px] relative mb-3" @click="playBeat">
+    <div
+      class="w-full h-[200px] relative mb-3 select-none cursor-pointer"
+      @click="playBeat"
+    >
       <transition name="overlay">
         <div
+          v-if="beat.wrap"
           data-test="hovered"
           v-show="hovered"
           class="play-overlay absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
@@ -68,129 +72,63 @@
       />
       <LoadingShimmer v-else class="rounded-lg object-cover box-border mb-3" />
     </div>
-    <div class="flex gap-1 mb-2" v-if="beat.bpm">
-        <div
-          title="BPM"
-          class="flex-1 px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px]"
+    <div class="flex gap-1 mb-2 select-none" v-if="beat.bpm">
+      <div
+        title="BPM"
+        class="flex-1 px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px]"
+      >
+        {{ beat.bpm }}BPM
+      </div>
+      <div
+        title="Number of listenings"
+        class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px]"
+      >
+        <svg
+          width="9px"
+          xmlns="http://www.w3.org/2000/svg"
+          class="ionicon"
+          viewBox="0 -20 512 512"
         >
-          {{ beat.bpm }}BPM
-        </div>
-        <div
-          title="Number of listenings"
-          class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px]"
+          <path
+            d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"
+            fill="white"
+            stroke="white"
+            stroke-miterlimit="10"
+            stroke-width="48"
+          />
+        </svg>
+        {{ beat.listenings }}
+      </div>
+      <div
+        title="Number of downloads"
+        class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-green-500 text-white flex justify-center items-center gap-[2px]"
+      >
+        {{ beat.downloads }}
+        <svg
+          width="13px"
+          xmlns="http://www.w3.org/2000/svg"
+          class="ionicon"
+          viewBox="0 -30 512 512"
         >
-          <svg
-            width="9px"
-            xmlns="http://www.w3.org/2000/svg"
-            class="ionicon"
-            viewBox="0 -20 512 512"
-          >
-            <path
-              d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"
-              fill="white"
-              stroke="white"
-              stroke-miterlimit="10"
-              stroke-width="48"
-            />
-          </svg>
-          {{ beat.listenings }}
-        </div>
-        <div
-          title="Number of downloads"
-          class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-green-500 text-white flex justify-center items-center gap-[2px]"
-        >
-          {{ beat.downloads }}
-          <svg
-            width="13px"
-            xmlns="http://www.w3.org/2000/svg"
-            class="ionicon"
-            viewBox="0 -30 512 512"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="48"
-              d="M112 268l144 144 144-144M256 392V100"
-            />
-          </svg>
-        </div>
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="48"
+            d="M112 268l144 144 144-144M256 392V100"
+          />
+        </svg>
+      </div>
     </div>
     <LoadingShimmer v-else class="rounded-lg h-[20px] box-border mb-2" />
-    <div v-if="beat.name" class="text-black font-semibold text-2xl mb-1">{{ beat.name }}</div>
-    <LoadingShimmer v-else class="rounded-lg h-[32px] box-border mb-1" />
-    <div v-if="beat.artist" class="text-black text-md">{{ beat.artist.name }}</div>
-    <LoadingShimmer v-else class="rounded-lg h-[24px] box-border" />
-    <!-- <div
-      class="borderedPart box-border p-3 flex-1 flex flex-col justify-between rounded-r-lg gap-1"
-    >
-      <div
-        class="flex text-xl text-center text-black font-semibold text-2xl"
-        v-if="beat.name"
-      >
-        {{ beat.name }}
-      </div>
-      <LoadingShimmer class="rounded-lg h-5" v-else />
-      <div class="flex gap-1 flex-wrap" v-if="beat.artist && beat.bpm">
-        <router-link
-          title="Type"
-          :to="`/beats?ordering=-id&artist=${beat.artist.id}`"
-          class="min-w-[75px] btn btn-xs shadow-md bg-primary text-white border-none hover:from-black"
-        >
-          {{ beat.artist.name }}
-        </router-link>
-        <router-link
-          title="BPM"
-          :to="`/beats?ordering=-id&bpm=${beat.bpm}`"
-          class="flex-1 btn btn-xs shadow-md bg-primary text-white border-none"
-        >
-          {{ beat.bpm }}BPM
-        </router-link>
-        <div
-          title="Number of listenings"
-          class="btn btn-xs shadow-md bg-primary text-white border-none gap-[2px] hover:bg-primary"
-        >
-          <svg
-            width="9px"
-            xmlns="http://www.w3.org/2000/svg"
-            class="ionicon"
-            viewBox="0 -20 512 512"
-          >
-            <path
-              d="M112 111v290c0 17.44 17 28.52 31 20.16l247.9-148.37c12.12-7.25 12.12-26.33 0-33.58L143 90.84c-14-8.36-31 2.72-31 20.16z"
-              fill="white"
-              stroke="white"
-              stroke-miterlimit="10"
-              stroke-width="48"
-            />
-          </svg>
-          {{ beat.listenings }}
-        </div>
-        <div
-          title="Number of downloads"
-          class="btn btn-xs shadow-md bg-accent text-white border-none gap-[2px] hover:bg-accent"
-        >
-          {{ beat.downloads }}
-          <svg
-            width="13px"
-            xmlns="http://www.w3.org/2000/svg"
-            class="ionicon"
-            viewBox="0 -30 512 512"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="48"
-              d="M112 268l144 144 144-144M256 392V100"
-            />
-          </svg>
-        </div>
-      </div>
-      <LoadingShimmer class="rounded-lg h-5" v-else />
-    </div> -->
+    <div v-if="beat.name" class="text-black font-semibold text-2xl">
+      {{ beat.name }}
+    </div>
+    <div v-if="beat.artist" class="text-black text-sm">
+      {{ beat.artist.name }}
+    </div>
+    <LoadingShimmer v-else class="rounded-lg h-[52px] box-border" />
   </div>
 </template>
 <script lang="ts">
