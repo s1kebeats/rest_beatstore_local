@@ -1,8 +1,8 @@
 <template>
-  <div class="main bg-[#ffffff] flex flex-col min-h-screen">
+  <div class="main flex flex-col min-h-screen">
     <BeatstoreOverlayMain />
     <BeatstoreHeader />
-    <main class="main relative grow flex flex-col bg-cover bg-no-repeat">
+    <main class="relative grow flex flex-col bg-cover bg-no-repeat">
       <router-view></router-view>
     </main>
     <BeatstoreFooter class="main-footer" />
@@ -25,21 +25,29 @@ import BeatstoreFooter from "@/components/sections/BeatstoreFooter.vue";
   overflow-y: hidden;
 }
 .responsive {
-  @media screen and (max-width: 1700px) {
-    width: 1316px;
-    max-width: 1316px;
+  @media screen and (max-width: 1590px) {
+    width: 1300px;
+    max-width: 1300px;
   }
-  @media screen and (max-width: 1368px) {
-    width: 984px;
-    max-width: 984px;
+  @media screen and (max-width: 1370px) {
+    width: 1080px;
+    max-width: 1080px;
   }
-  @media screen and (max-width: 1030px) {
-    width: 652px;
-    max-width: 652px;
+  @media screen and (max-width: 1150px) {
+    width: 860px;
+    max-width: 860px;
   }
-  @media screen and (max-width: 700px) {
-    width: 320px;
-    max-width: 320px;
+  @media screen and (max-width: 930px) {
+    width: 640px;
+    max-width: 640px;
+  }
+  @media screen and (max-width: 710px) {
+    width: 420px;
+    max-width: 420px;
+  }
+  @media screen and (max-width: 490px) {
+    width: 200px;
+    max-width: 200px;
   }
 }
 .overlay-enter-active,

@@ -1,35 +1,69 @@
 <template>
   <section class="w-[1520px] responsive py-5">
     <h1 class="text-left text-xl font-semibold my-5 text-black">Artists</h1>
-    <BeatstoreArtistsLanding />
+    <div v-if="!loading" class="flex gap-5 flex-wrap">
+      <router-link
+        :to="`/beats?ordering=-id&artist=${artist.id}`"
+        class="landingArtist select-none w-[134px] h-[134px] rounded-full bg-gradient-to-tr from-[#f3effc] to-primary flex items-center justify-center text-white text-lg shadow-lg hover:from-black hover:to-primary transition-all"
+        v-for="artist in artistList"
+      >
+        {{ artist.name }}
+      </router-link>
+    </div>
+    <div v-if="loading" class="flex gap-5 flex-wrap">
+      <div
+        class="landingArtist w-[134px] h-[134px] rounded-full"
+        v-for="artist in [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]"
+      >
+        <LoadingShimmer class="rounded-full" />
+      </div>
+    </div>
   </section>
 </template>
-<script lang="ts">
-interface Artist {
-  id?: number | null;
-  name?: string;
-}
-interface Beat {
-  id?: number | null;
-  name?: string;
-  bpm?: number | null;
-  artist?: Artist;
-  mp3?: string;
-  wave?: string;
-  wrap?: string;
-}
-</script>
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
 import axios from "axios";
-import BeatstoreArtistsLanding from "@/components/modules/BeatstoreArtistsLanding.vue";
+import { ref, onMounted } from "vue";
+import LoadingShimmer from "@/components/UI/LoadingShimmer.vue";
+// local artist query value
+interface Artist {
+  id: number;
+  name: string;
+}
 const loading = ref(true);
-const bestBeatsList = ref<Beat[]>([]);
+const artistList = ref<Artist[]>([]);
+// fetch artists data
 onMounted(async () => {
-  loading.value = true;
-  bestBeatsList.value = (
-    await axios.get("http://localhost:8000/api/beats/?ordering=-listenings")
-  ).data.results.slice(0, 10);
-  setTimeout(() => (loading.value = false), 250);
+  artistList.value = (
+    await axios.get("http://localhost:8000/api/artists/")
+  ).data.results.slice(0, 9);
+  loading.value = false;
 });
 </script>
+<style lang="scss">
+.landingArtist {
+  @media screen and (max-width: 1590px) {
+    width: 112px;
+    height: 112px;
+  }
+  @media screen and (max-width: 1370px) {
+    width: 102px;
+    height: 102px;
+  }
+  // @media screen and (max-width: 1150px) {
+  //   width: 860px;
+  //   max-width: 860px;
+  // }
+  // @media screen and (max-width: 930px) {
+  //   width: 640px;
+  //   max-width: 640px;
+  // }
+  // @media screen and (max-width: 710px) {
+  //   width: 420px;
+  //   max-width: 420px;
+  // }
+  // @media screen and (max-width: 490px) {
+  //   width: 200px;
+  //   max-width: 200px;
+  // }
+}
+</style>

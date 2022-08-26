@@ -16,19 +16,23 @@
         >
           {{ beat.name }}
         </div>
-        <div class="text-xs 600:hidden text-white flex items-center gap-1 select-none">
+        <div
+          class="text-xs 600:hidden text-white flex items-center gap-1 select-none"
+        >
           <div
             title="Type"
             data-test="playerBeatArtist"
             class="bg-primary rounded-md px-1 h-[18px] flex items-center transition-all"
-            >{{ beat.artist!.name }}</div
           >
+            {{ beat.artist!.name }}
+          </div>
           <div
             title="BPM"
             data-test="playerBeatBpm"
             class="bg-accent rounded-md px-1 h-[18px] flex items-center transition-all"
-            >{{ beat.bpm }}BPM</div
           >
+            {{ beat.bpm }}BPM
+          </div>
         </div>
       </div>
     </div>

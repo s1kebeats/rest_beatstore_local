@@ -1,11 +1,11 @@
 <template>
-    <BeatstoreArtist
-      v-for="artist in artistList"
-      :artist="artist"
-      :key="artist.id ? artist.id : 0"
-      @select-artist="selectArtist"
-      :class="artistQuery.includes(artist.id) ? 'bg-black' : 'bg-primary'"
-    />
+  <BeatstoreArtist
+    v-for="artist in artistList"
+    :artist="artist"
+    :key="artist.id ? artist.id : 0"
+    @select-artist="selectArtist"
+    :class="artistQuery.includes(artist.id) ? 'bg-black' : 'bg-primary'"
+  />
 </template>
 <script lang="ts">
 interface Artist {

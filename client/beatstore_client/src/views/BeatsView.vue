@@ -9,5 +9,4 @@
 </template>
 <script setup lang="ts">
 import BeatstoreBeats from "@/components/sections/BeatstoreBeats.vue";
-import BeatstoreUsage from "@/components/sections/BeatstoreUsage.vue";
 </script>

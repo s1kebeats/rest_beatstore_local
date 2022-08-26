@@ -3,11 +3,11 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     screens: {
-      1700: { max: "1700px" },
-      1368: { max: "1368px" },
-      1200: { max: "1200px" },
+      1590: { max: "1590px" },
+      1370: { max: "1370px" },
+      1150: { max: "1150px" },
       700: { max: "700px" },
-      600: { max: "600px" },
+      490: { max: "490px" },
     },
   },
   daisyui: {

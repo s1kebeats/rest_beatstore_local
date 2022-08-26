@@ -17,7 +17,9 @@
         class="player__timeline"
         :value="timelineUp ? audioTimeOnUp : audioTimeOnDown"
       />
-      <div class="responsive flex h-[42px] w-[1520px] px-5 items-center 600:px-2">
+      <div
+        class="responsive flex h-[42px] w-[1520px] px-5 items-center 600:px-2"
+      >
         <div
           class="w-[150px] flex h-full items-center gap-2 600:gap-1 600:w-[80px]"
         >

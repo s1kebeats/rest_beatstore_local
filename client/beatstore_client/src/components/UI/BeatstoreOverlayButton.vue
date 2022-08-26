@@ -11,7 +11,7 @@ import { useResize } from "@/composables/useResize";
 import { useStore } from "@/stores/index";
 const store = useStore();
 // checking if device is mobile
-const mobile = useResize(600);
+const mobile = useResize(490);
 </script>
 <style lang="scss">
 .overlay-btn {
