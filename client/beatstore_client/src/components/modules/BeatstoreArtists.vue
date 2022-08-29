@@ -4,10 +4,11 @@
     v-show="!loading"
     :artist-list="artistList"
   />
-  <ArtistList
+  <LoadingShimmer
     data-test="placeholder"
     v-if="loading"
-    :artist-list="[{}, {}, {}, {}]"
+    v-for="item in [{}, {}, {}, {}]"
+    class="rounded-lg border-none min-w-[90px] max-w-[110px] h-[24px] flex-1 hover:bg-base-300"
   />
 </template>
 <script setup lang="ts">
@@ -15,6 +16,7 @@ import ArtistList from "@/components/UI/ArtistList.vue";
 import axios from "axios";
 import { useRoute } from "vue-router";
 import { ref, onMounted } from "vue";
+import LoadingShimmer from "../UI/LoadingShimmer.vue";
 const route = useRoute();
 const emit = defineEmits<{ (e: "updateArtistQuery", query: id[]): void }>();
 // local artist query value

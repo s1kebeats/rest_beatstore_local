@@ -2,7 +2,7 @@
   <div
     @mouseenter="toggleThumb(true)"
     @mouseleave="toggleThumb(false)"
-    class="flex items-center gap-1 600:hidden"
+    class="flex items-center gap-1 710:hidden"
   >
     <CustomRange
       :thumb-state="thumbState"

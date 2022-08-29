@@ -6,8 +6,9 @@ module.exports = {
       1590: { max: "1590px" },
       1370: { max: "1370px" },
       1150: { max: "1150px" },
-      700: { max: "700px" },
-      490: { max: "490px" },
+      930: { max: "930px" },
+      710: { max: "710px" },
+      525: { max: "525px" },
     },
   },
   daisyui: {

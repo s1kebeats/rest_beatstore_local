@@ -42,12 +42,12 @@ import BeatstoreFooter from "@/components/sections/BeatstoreFooter.vue";
     max-width: 640px;
   }
   @media screen and (max-width: 710px) {
-    width: 420px;
-    max-width: 420px;
+    width: 475px;
+    max-width: 475px;
   }
-  @media screen and (max-width: 490px) {
-    width: 200px;
-    max-width: 200px;
+  @media screen and (max-width: 525px) {
+    width: 310px;
+    max-width: 310px;
   }
 }
 .overlay-enter-active,

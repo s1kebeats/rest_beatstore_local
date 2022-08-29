@@ -18,10 +18,10 @@
         :value="timelineUp ? audioTimeOnUp : audioTimeOnDown"
       />
       <div
-        class="responsive flex h-[42px] w-[1520px] px-5 items-center 600:px-2"
+        class="responsive flex h-[42px] w-[1520px] items-center 525:max-w-full 525:px-2"
       >
         <div
-          class="w-[150px] flex h-full items-center gap-2 600:gap-1 600:w-[80px]"
+          class="flex h-full items-center gap-2"
         >
           <button
             data-test="playPauseButton"
@@ -32,20 +32,20 @@
             "
           ></button>
           <div
-            class="flex items-center justify-center h-full w-[65px] text-xs text-white 600:text-[.6rem] 600:w-[51px]"
+            class="flex items-center justify-center h-full w-[65px] text-xs text-white 710:text-[11px] 710:w-[55px]"
           >
-            <span class="text-center w-[30px] 600:w-[22px]">
+            <span class="text-center w-[30px] 710:w-[25px]">
               {{ audioCurrentTimeOutput }}
             </span>
-            <span class="text-center w-[5px]"> / </span>
-            <span class="text-center w-[30px] 600:w-[22px]">
+            <span class="text-center w-[5px] 710:"> / </span>
+            <span class="text-center w-[30px] 710:w-[25px]">
               {{ audioDurationOutput }}
             </span>
           </div>
         </div>
         <PlayerInfo :beat="beat" />
         <div
-          class="w-[175px] flex h-full items-center justify-end gap-5 600:w-[80px]"
+          class="flex h-full items-center justify-end gap-5 710:w-[88px]"
         >
           <PlayerVolume @update-audio-volume="setAudioVolume" />
           <a

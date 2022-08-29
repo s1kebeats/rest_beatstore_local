@@ -1,6 +1,6 @@
 <template>
   <div class="flex-1 flex h-full items-center gap-5">
-    <div class="flex items-center justify-center flex-1 gap-2">
+    <div class="flex items-center justify-center flex-1 gap-2 ">
       <img
         data-test="playerBeatWrap"
         :src="beat.wrap"
@@ -9,7 +9,7 @@
         alt="wrap-image"
         class="rounded-lg box-border object-cover w-[26px] h-[26px] drop-shadow-md"
       />
-      <div class="flex gap-3 600:gap-0">
+      <div class="flex gap-3">
         <div
           class="flex items-center text-md font-semibold text-white"
           data-test="playerBeatName"
@@ -17,7 +17,7 @@
           {{ beat.name }}
         </div>
         <div
-          class="text-xs 600:hidden text-white flex items-center gap-1 select-none"
+          class="text-xs text-white flex items-center gap-1 select-none 710:hidden"
         >
           <div
             title="Type"

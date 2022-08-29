@@ -1,6 +1,6 @@
 <template>
-  <section class="py-5 490:w-[100%]">
-    <div class="flex items-center justify-between 490:px-8">
+  <section class="py-5">
+    <div class="flex items-center justify-between">
       <h1 class="text-left text-xl font-semibold my-5 text-black">
         Most popular
       </h1>
@@ -12,11 +12,12 @@
     </div>
 
     <div class="flex justify-center">
-      <BeatList v-show="!loading" :list="bestBeatsList" data-test="beatlist" />
+      <BeatList v-show="!loading" :list="bestBeatsList" data-test="beatlist" class="h-[292px] 930:h-[237px] overflow-hidden" />
       <BeatList
         v-if="loading"
         :list="[{}, {}, {}, {}, {}, {}, {}]"
         data-test="placeholder"
+        class="h-[292px] 930:h-[237px] overflow-hidden"
       />
     </div>
   </section>

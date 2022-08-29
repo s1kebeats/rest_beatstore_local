@@ -1,12 +1,12 @@
 <template>
   <div
     data-test="beat"
-    class="box-border flex flex-col w-[200px] bg-base-100 rounded-lg"
+    class="box-border flex flex-col w-[200px] 930:w-[145px] bg-base-100 rounded-lg"
     @mouseenter="showOverlay"
     @mouseleave="hideOverlay"
   >
     <div
-      class="w-full h-[200px] relative mb-3 select-none cursor-pointer"
+      class="w-full h-[200px] 930:h-[145px] relative mb-3 select-none cursor-pointer"
       @click="playBeat"
     >
       <transition name="overlay">
@@ -75,13 +75,13 @@
     <div class="flex gap-1 mb-2 select-none" v-if="beat.bpm">
       <div
         title="BPM"
-        class="flex-1 px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px]"
+        class="flex-1 px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px] 930:text-[9px]"
       >
         {{ beat.bpm }}BPM
       </div>
       <div
         title="Number of listenings"
-        class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px]"
+        class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px] 930:text-[9px]"
       >
         <svg
           width="9px"
@@ -101,7 +101,7 @@
       </div>
       <div
         title="Number of downloads"
-        class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-green-500 text-white flex justify-center items-center gap-[2px]"
+        class="px-2 h-[20px] text-xs rounded-lg shadow-md bg-green-500 text-white flex justify-center items-center gap-[2px] 930:text-[9px]"
       >
         {{ beat.downloads }}
         <svg

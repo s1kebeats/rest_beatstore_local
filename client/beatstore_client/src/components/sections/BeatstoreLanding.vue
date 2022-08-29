@@ -1,12 +1,12 @@
 <template>
   <section
-    class="landing select-none border-b flex items-center justify-center w-full py-[200px] 600:py-[10px]"
+    class="landing select-none border-b flex items-center justify-center w-full py-[200px] 930:py-[100px]"
   >
-    <div class="w-[1520px] responsive flex items-center justify-center 1150:flex-col 1150:gap-14">
-      <h1 class="text-5xl text-black font-semibold">Free type beats by</h1>
-      <div class="flex-1 flex justify-center items-center gap-4">
-        <img class="h-[80px] drop-shadow-sm" src="@/assets/images/logo.svg" />
-        <span class="text-black text-7xl font-['Poppins']"> s1kebeats </span>
+    <div class="w-[1520px] text responsive flex items-center justify-center 1150:flex-col 1150:gap-14 930:gap-1">
+      <h1 class="text-5xl text-black font-semibold 930:text-3xl">Free type beats by</h1>
+      <div class="flex-1 flex justify-center items-center gap-4 930:gap-3">
+        <img class="h-[80px] drop-shadow-sm 930:h-[60px]" src="@/assets/images/logo.svg" />
+        <span class="text-black text-7xl font-['Poppins'] 930:text-5xl"> s1kebeats </span>
         <!-- Socials -->
         <!-- <div class="flex flex-col items-center justify-center">
           <a
@@ -48,5 +48,10 @@
 .yt {
   background: center no-repeat url("@/assets/images/youtube-black.svg");
   background-size: 23px;
+}
+.text {
+  @media screen and (max-width: 930px) {
+    gap: 25px;
+  }
 }
 </style>

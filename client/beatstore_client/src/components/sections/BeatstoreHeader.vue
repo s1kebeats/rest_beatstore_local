@@ -2,9 +2,9 @@
   <header
     class="w-full h-[60px] box-border border-b border-base-200 flex items-center gap-[20px] px-[20px] text-center select-none"
   >
-    <BeatstoreLogo class="490:flex-1" />
+    <BeatstoreLogo class="525:flex-1" />
     <slot>
-      <BeatstoreNav class="490:hidden" :classes="{ main: '', link: '' }" />
+      <BeatstoreNav class="525:hidden" :classes="{ main: '', link: '' }" />
       <BeatstoreOverlayButton />
     </slot>
   </header>
