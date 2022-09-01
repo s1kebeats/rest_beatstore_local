@@ -15,10 +15,8 @@
     <button
       data-test="volumeButton"
       @click="toggleAudioVolume"
-      :class="
-        'block w-[26px] h-[26px] volume drop-shadow-md' +
-        (!audioVolume ? ' muted' : '')
-      "
+      class="block w-[26px] h-[26px] volume"
+      :class="audioVolume ? '' : 'muted'"
     ></button>
   </div>
 </template>

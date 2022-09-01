@@ -6,7 +6,7 @@
       v-if="store.beat.mp3"
       @mouseenter="toggleThumb(true)"
       @mouseleave="toggleThumb(false)"
-      class="bg-black w-full h-[45px] flex flex-col items-center"
+      class="bg-black w-full h-[45px] flex flex-col items-center fixed bottom-0"
     >
       <CustomRange
         @toggle-thumb="focusThumb"
@@ -18,18 +18,14 @@
         :value="timelineUp ? audioTimeOnUp : audioTimeOnDown"
       />
       <div
-        class="responsive flex h-[42px] w-[1520px] items-center 525:max-w-full 525:px-2"
+        class="responsive flex h-[42px] items-center 525:max-w-full 525:px-2"
       >
-        <div
-          class="flex h-full items-center gap-2"
-        >
+        <div class="flex h-full items-center gap-2">
           <button
             data-test="playPauseButton"
             @click="store.playPause()"
-            :class="
-              'play w-[25px] h-[25px] drop-shadow-md' +
-              (store.playing ? ' pause' : '')
-            "
+            class="play w-[25px] h-[25px]"
+            :class="store.playing ? 'pause' : ''"
           ></button>
           <div
             class="flex items-center justify-center h-full w-[65px] text-xs text-white 710:text-[11px] 710:w-[55px]"
@@ -37,22 +33,20 @@
             <span class="text-center w-[30px] 710:w-[25px]">
               {{ audioCurrentTimeOutput }}
             </span>
-            <span class="text-center w-[5px] 710:"> / </span>
+            <span class="text-center w-[5px]"> / </span>
             <span class="text-center w-[30px] 710:w-[25px]">
               {{ audioDurationOutput }}
             </span>
           </div>
         </div>
         <PlayerInfo :beat="beat" />
-        <div
-          class="flex h-full items-center justify-end gap-5 710:w-[88px]"
-        >
+        <div class="flex h-full items-center justify-end gap-5 710:w-[88px]">
           <PlayerVolume @update-audio-volume="setAudioVolume" />
           <a
             @click="downloadIncrement"
             data-test="downloadLink"
             download=""
-            class="block w-[25px] h-[25px] download drop-shadow-md"
+            class="block w-[25px] h-[25px] download"
             :href="beat.wave"
           ></a>
         </div>
@@ -173,7 +167,9 @@ const setAudioVolume = (newValue: number) => {
   audio.volume = +(newValue / 100).toFixed(2);
 };
 const downloadIncrement = () => {
-  axios.get(`http://localhost:8000/api/beat/${beat.value.id}/download`);
+  axios.get(
+    `https://s1kebeatstore-rest.herokuapp.com/api/beat/${beat.value.id}/download`
+  );
 };
 </script>
 <style lang="scss" scoped>

@@ -24,7 +24,7 @@ describe("PlayerInfo", () => {
 
     expect(wrapper.get('[data-test="playerBeatName"]').text()).toBe("Life");
     expect(wrapper.get('[data-test="playerBeatArtist"]').text()).toBe(
-      "Lil Tjay"
+      "Type: Lil Tjay"
     );
     expect(wrapper.get('[data-test="playerBeatBpm"]').text()).toBe("130BPM");
     const wrap = wrapper.get('[data-test="playerBeatWrap"]')

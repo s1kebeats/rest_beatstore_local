@@ -1,5 +1,5 @@
 <template>
-  <section class="py-5">
+  <section class="py-5 responsive">
     <div class="flex items-center justify-between">
       <h1 class="text-left text-xl font-semibold my-5 text-black">
         Most popular
@@ -12,7 +12,12 @@
     </div>
 
     <div class="flex justify-center">
-      <BeatList v-show="!loading" :list="bestBeatsList" data-test="beatlist" class="h-[292px] 930:h-[237px] overflow-hidden" />
+      <BeatList
+        v-show="!loading"
+        :list="bestBeatsList"
+        data-test="beatlist"
+        class="h-[292px] 930:h-[237px] overflow-hidden"
+      />
       <BeatList
         v-if="loading"
         :list="[{}, {}, {}, {}, {}, {}, {}]"

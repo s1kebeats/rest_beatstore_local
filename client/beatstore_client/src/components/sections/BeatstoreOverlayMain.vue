@@ -2,14 +2,13 @@
   <BeatstoreOverlay
     data-test="mainOverlay"
     class="main-overlay"
-    v-if="mobile"
     :active="store.overlay"
   >
-    <BeatstoreHeader class="bg-transparent min-h-[65px] text-white">
+    <BeatstoreHeader class="min-h-[60px]">
       <button
         title="Close overlay"
         @click="store.toggleOverlay"
-        class="close-button btn btn-primary btn-square btn-xs absolute hover:bg-primary hover:border-primary overlay-btn_close"
+        class="btn btn-primary btn-square btn-xs absolute right-5 hover:bg-primary hover:border-primary overlay-btn_close"
       ></button>
     </BeatstoreHeader>
     <main class="grow flex items-center justify-center flex-col h-full w-full">
@@ -21,21 +20,17 @@
         }"
       />
     </main>
-    <BeatstoreFooter class="w-full" />
+    <BeatstoreFooter />
   </BeatstoreOverlay>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
 import BeatstoreOverlay from "@/components/UI/BeatstoreOverlay.vue";
 import BeatstoreHeader from "@/components/sections/BeatstoreHeader.vue";
 import BeatstoreNav from "@/components/UI/BeatstoreNav.vue";
 import BeatstoreFooter from "@/components/sections/BeatstoreFooter.vue";
-import { useResize } from "@/composables/useResize";
 // global store
 import { useStore } from "@/stores/index";
 const store = useStore();
-// checking if device is mobile
-const mobile = ref(useResize(600));
 </script>
 <style lang="scss">
 .overlay-btn_close {

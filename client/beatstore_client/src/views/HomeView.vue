@@ -1,12 +1,8 @@
 <template>
-  <div>
-    <section class="flex flex-col items-center min-h-[calc(100vh-90px)]">
-      <BeatstoreLanding />
-      <BestBeats />
-      <ArtistsLanding />
-      <BeatstoreUsage />
-    </section>
-  </div>
+  <BeatstoreLanding />
+  <BestBeats />
+  <ArtistsLanding />
+  <BeatstoreUsage />
 </template>
 <script setup lang="ts">
 import BestBeats from "@/components/sections/BestBeats.vue";

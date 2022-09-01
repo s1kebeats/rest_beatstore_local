@@ -3,7 +3,7 @@
     v-if="mobile"
     title="Toggle overlay"
     @click="store.toggleOverlay"
-    class="overlay-button btn btn-primary btn-square btn-xs absolute right-5 hover:bg-primary hover:border-primary shadow-md overlay-btn"
+    class="btn btn-primary btn-square btn-xs absolute right-5 hover:bg-primary hover:border-primary shadow-md overlay-btn"
   ></button>
 </template>
 <script setup lang="ts">

@@ -1,13 +1,13 @@
 <template>
   <div class="flex-1 flex h-full items-center gap-5">
-    <div class="flex items-center justify-center flex-1 gap-2 ">
+    <div class="flex items-center justify-center flex-1 gap-2">
       <img
         data-test="playerBeatWrap"
         :src="beat.wrap"
         width="26px"
         height="26px"
         alt="wrap-image"
-        class="rounded-lg box-border object-cover w-[26px] h-[26px] drop-shadow-md"
+        class="rounded-lg object-cover w-[26px] h-[26px]"
       />
       <div class="flex gap-3">
         <div

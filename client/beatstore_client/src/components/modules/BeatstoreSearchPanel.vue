@@ -1,10 +1,10 @@
 <template>
   <div
     data-test="searchPanel"
-    class="flex justify-center box-border w-[1520px] responsive pb-5"
+    class="flex justify-center box-border responsive pb-5"
   >
     <form class="w-full flex flex-wrap gap-3">
-        <fieldset class="flex items-center gap-1 bpm flex-1 min-w-[100px] max-w-[100px] 1700:min-w-[100px]">
+        <fieldset class="flex items-center gap-1 bpm w-[100px]">
           <input
             id="bpm"
             data-test="bpmInput"
@@ -16,7 +16,7 @@
             placeholder="1"
             :value="searchQuery.bpm"
             @input.prevent="debounceInputBpm"
-            class="w-full input input-xs input-bordered input-primar focus:outline-none focus:border-base-300 text-black"
+            class="w-full input input-xs input-bordered focus:outline-none text-black"
           />
           <label
             for="bpm"
@@ -25,7 +25,7 @@
             BPM
           </label>
         </fieldset>
-        <fieldset class="flex items-center gap-2 flex-1 min-w-[170px] max-w-[200px] 1700:min-w-[170px] field">
+        <fieldset class="flex items-center gap-2 flex-1 min-w-[170px] max-w-[200px]">
           <input
             id="name"
             data-test="nameInput"
@@ -100,13 +100,3 @@ watch(searchQuery, () => {
   emit("updateSearchQuery", query);
 });
 </script>
-<style lang="scss">
-.search {
-  @media screen and (max-width: 1030px) {
-    flex-direction: column;
-    .field {
-      max-width: 100%;
-    }
-  }
-}
-</style>

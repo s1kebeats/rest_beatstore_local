@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex-1 flex flex-col items-center pb-[50px] min-h-[calc(100vh-90px)]"
+    class="flex-1 flex flex-col items-center py-5 min-h-[calc(100vh-85px)]"
   >
     <BeatstoreSearch @search="updateQuery" />
     <BeatList class="flex-1" v-show="!loading" :list="beatList" />
@@ -64,7 +64,7 @@ const customFetch = async (url: string, mode?: boolean) => {
   // save next page url
   next.value = data.next;
   // loading state off
-  setTimeout(() => (loading.value = false), 250);
+  loading.value = false;
 };
 // update query and fetch data
 const updateQuery = async (newValue: string) => {
@@ -90,7 +90,9 @@ watch(
 onMounted(() => {
   const query = route.query as Record<string, string>;
   customFetch(
-    `http://localhost:8000/api/beats/?${new URLSearchParams(query).toString()}`
+    `http://localhost:8000/api/beats/?${new URLSearchParams(
+      query
+    ).toString()}`
   );
 });
 </script>

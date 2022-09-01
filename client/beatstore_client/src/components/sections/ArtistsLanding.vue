@@ -1,16 +1,22 @@
 <template>
-  <section class="w-[1520px] responsive py-5">
+  <section class="responsive py-5">
     <h1 class="text-left text-xl font-semibold my-5 text-black">Artists</h1>
-    <div v-if="!loading" class="flex gap-5 flex-wrap gaps h-[134px] 930:h-[100px] overflow-hidden">
+    <div
+      v-if="!loading"
+      class="flex justify-center gap-5 flex-wrap h-[144px] artistList overflow-hidden"
+    >
       <router-link
         :to="`/beats?ordering=-id&artist=${artist.id}`"
-        class="landingArtist  select-none w-[134px] h-[134px] rounded-full bg-gradient-to-tr from-[#f3effc] to-primary flex items-center justify-center text-white text-lg shadow-lg hover:from-black hover:to-primary transition-all 930:text-sm"
+        class="landingArtist select-none w-[134px] h-[134px] rounded-full bg-gradient-to-tr from-[#f3effc] to-primary flex items-center justify-center text-white text-lg shadow-lg hover:from-black hover:to-primary transition-all 930:text-sm"
         v-for="artist in artistList"
       >
         {{ artist.name }}
       </router-link>
     </div>
-    <div v-if="loading" class="flex gap-5 flex-wrap gaps h-[134px] 930:h-[100px] overflow-hidden">
+    <div
+      v-if="loading"
+      class="flex justify-center gap-5 flex-wrap h-[144px] artistList overflow-hidden"
+    >
       <div
         class="landingArtist w-[134px] h-[134px] rounded-full"
         v-for="artist in [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]"
@@ -41,51 +47,22 @@ onMounted(async () => {
 </script>
 <style lang="scss">
 .landingArtist {
-  // @media screen and (max-width: 1590px) {
-  //   width: 1300px;
-  //   max-width: 1300px;
-  // }
-  // @media screen and (max-width: 1370px) {
-  //   width: 1080px;
-  //   max-width: 1080px;
-  // }
-  // @media screen and (max-width: 1150px) {
-  //   width: 860px;
-  //   max-width: 860px;
-  // }
   @media screen and (max-width: 930px) {
     width: 100px;
     height: 100px;
-
   }
-  // @media screen and (max-width: 710px) {
-  //   width: 475px;
-  //   max-width: 475px;
-  // }
-  // @media screen and (max-width: 525px) {
-  //   width: 310px;
-  //   max-width: 310px;
-  // }
+  @media screen and (max-width: 525px) {
+    width: 93.3px;
+    height: 93.3px;
+  }
 }
-.gaps {
-  @media screen and (max-width: 1590px) {
-    gap: 32.5px;
-  }
-  @media screen and (max-width: 1370px) {
-    gap: 23.6px;
-  }
-  @media screen and (max-width: 1150px) {
-    gap: 47.5px;
-  }
+.artistList {
   @media screen and (max-width: 930px) {
-    gap: 35px;
+    height: 110px;
   }
-  @media screen and (max-width: 710px) {
-    gap: 25px;
+  @media screen and (max-width: 525px) {
+    height: 103px;
+    gap: 10px;
   }
-  // @media screen and (max-width: 525px) {
-  //   width: 310px;
-  //   max-width: 310px;
-  // }
 }
 </style>

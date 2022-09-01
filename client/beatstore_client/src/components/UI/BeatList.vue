@@ -10,7 +10,7 @@
     <p
       v-show="!list.length"
       data-test="nothingFound"
-      class="text-xl text-black text-center pt-1"
+      class="text-md text-black text-center pt-2"
     >
       Nothing was found
     </p>

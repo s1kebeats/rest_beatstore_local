@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-[1520px] flex justify-between items-center relative z-2 responsive"
+    class="flex justify-between items-center responsive"
   >
     <h1 class="text-left text-xl font-semibold mt-5 mb-4 text-black">Beats</h1>
     <div class="flex items-center gap-1">
@@ -39,7 +39,7 @@
         <div
           ref="orderingsPanel"
           v-show="showOrderings"
-          class="absolute w-[115px] border-full border-[1px] bg-base-100 rounded-md p-2 flex flex-col gap-1 shadow-md right-0"
+          class="absolute z-[2] w-[115px] border-full border-[1px] bg-base-100 rounded-md p-2 flex flex-col gap-1 shadow-md right-0"
         >
           <button
             ref="orderOption1"
@@ -159,10 +159,3 @@ const updateSearchQuery = (newQuery: stringQuery): void => {
   emit("search", `?${new URLSearchParams(searchQuery).toString()}`);
 };
 </script>
-<style lang="scss">
-.beats-wrapper {
-  @media screen and (max-width: 700px) {
-    max-width: 90%;
-  }
-}
-</style>

@@ -1,7 +1,7 @@
 <template>
   <div
     data-test="beat"
-    class="box-border flex flex-col w-[200px] 930:w-[145px] bg-base-100 rounded-lg"
+    class="flex flex-col w-[200px] 930:w-[145px] bg-base-100 rounded-lg"
     @mouseenter="showOverlay"
     @mouseleave="hideOverlay"
   >
@@ -14,13 +14,13 @@
           v-if="beat.wrap"
           data-test="hovered"
           v-show="hovered"
-          class="play-overlay absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
+          class="absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
         >
           <svg
             data-test="pauseIcon"
             v-show="store.beat.mp3 === beat.mp3 && copyHovered && store.playing"
             xmlns="http://www.w3.org/2000/svg"
-            class="ionicon w-[60px]"
+            class="w-[60px]"
             viewBox="0 0 512 512"
             fill="#FFFFFF"
           >
@@ -35,7 +35,7 @@
               store.beat.mp3 === beat.mp3 && !copyHovered && store.playing
             "
             xmlns="http://www.w3.org/2000/svg"
-            class="ionicon w-[50px]"
+            class="w-[50px]"
             viewBox="0 0 512 512"
             fill="#FFFFFF"
           >
@@ -53,7 +53,7 @@
               (store.beat.mp3 && store.beat.mp3 !== beat.mp3) || !store.playing
             "
             xmlns="http://www.w3.org/2000/svg"
-            class="ionicon w-[60px]"
+            class="w-[60px]"
             viewBox="0 0 512 512"
             fill="#FFFFFF"
           >
@@ -68,9 +68,9 @@
         data-test="beatWrap"
         v-if="beat.wrap"
         :src="beat.wrap"
-        class="rounded-lg object-cover box-border w-full h-full shadow-lg"
+        class="rounded-lg object-cover w-full h-full shadow-lg"
       />
-      <LoadingShimmer v-else class="rounded-lg object-cover box-border mb-3" />
+      <LoadingShimmer v-else class="rounded-lg box-border mb-3" />
     </div>
     <div class="flex gap-1 mb-2 select-none" v-if="beat.bpm">
       <div
@@ -121,14 +121,14 @@
         </svg>
       </div>
     </div>
-    <LoadingShimmer v-else class="rounded-lg h-[20px] box-border mb-2" />
+    <LoadingShimmer v-else class="rounded-lg h-[20px] mb-2" />
     <div v-if="beat.name" class="text-black font-semibold text-2xl">
       {{ beat.name }}
     </div>
     <div v-if="beat.artist" class="text-black text-sm">
       {{ beat.artist.name }}
     </div>
-    <LoadingShimmer v-else class="rounded-lg h-[52px] box-border" />
+    <LoadingShimmer v-else class="rounded-lg h-[52px]" />
   </div>
 </template>
 <script lang="ts">
@@ -151,13 +151,11 @@ interface Beat {
 <script setup lang="ts">
 import LoadingShimmer from "@/components/UI/LoadingShimmer.vue";
 import { ref, onMounted, watch } from "vue";
-import { useRoute } from "vue-router";
 // global store
 import { useStore } from "@/stores/index";
 import { storeToRefs } from "pinia";
 const store = useStore();
 const props = defineProps<{ beat: Beat }>();
-const route = useRoute();
 // global playing state
 const { playing } = storeToRefs(store);
 // overlay value

@@ -1,15 +1,11 @@
 <template>
-  <div class="main flex flex-col min-h-screen">
-    <BeatstoreOverlayMain />
-    <BeatstoreHeader />
-    <main class="relative grow flex flex-col bg-cover bg-no-repeat">
-      <router-view></router-view>
-    </main>
-    <BeatstoreFooter class="main-footer" />
-    <div class="fixed bottom-0 w-full">
-      <BeatstorePlayer />
-    </div>
-  </div>
+  <BeatstoreOverlayMain />
+  <BeatstoreHeader />
+  <main class="grow flex flex-col items-center">
+    <router-view></router-view>
+  </main>
+  <BeatstoreFooter />
+  <BeatstorePlayer />
 </template>
 <script setup lang="ts">
 import BeatstoreOverlayMain from "@/components/sections/BeatstoreOverlayMain.vue";
@@ -25,6 +21,8 @@ import BeatstoreFooter from "@/components/sections/BeatstoreFooter.vue";
   overflow-y: hidden;
 }
 .responsive {
+  width: 1520px;
+  max-width: 1520px;
   @media screen and (max-width: 1590px) {
     width: 1300px;
     max-width: 1300px;

@@ -1,13 +1,14 @@
 <template>
-  <nav :class="'flex gap-4 grow justify-end ' + classes.main" data-test="main">
+  <nav
+    class="flex gap-4 grow justify-end"
+    :class="classes.main"
+    data-test="main"
+  >
     <router-link
       title="Home"
       to="/"
-      :class="
-        'text-sm font-medium text-black transition-all ' +
-        classes.link +
-        (store.overlay ? '' : ' 1368:text-black ')
-      "
+      class="font-medium transition-all"
+      :class="classes.link"
       data-test="link"
     >
       Home
@@ -15,11 +16,8 @@
     <router-link
       title="Beats"
       to="/beats"
-      :class="
-        'text-sm font-medium text-black transition-all ' +
-        classes.link +
-        (store.overlay ? '' : ' 1368:text-black ')
-      "
+      class="font-medium transition-all"
+      :class="classes.link"
       data-test="link"
     >
       Beats
@@ -27,11 +25,8 @@
     <router-link
       title="Terms of use"
       to="/#usage"
-      :class="
-        'text-sm font-medium text-black transition-all ' +
-        classes.link +
-        (store.overlay ? '' : ' 1368:text-black ')
-      "
+      class="font-medium transition-all"
+      :class="classes.link"
       data-test="link"
     >
       Usage
@@ -39,8 +34,6 @@
   </nav>
 </template>
 <script setup lang="ts">
-import { useStore } from "@/stores/index";
-const store = useStore();
 const props = defineProps<{
   classes: {
     main: string;

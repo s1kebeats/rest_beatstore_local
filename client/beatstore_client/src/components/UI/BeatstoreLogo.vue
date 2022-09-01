@@ -1,9 +1,7 @@
 <template>
   <div
-    :class="
-      'flex justify-center transition-all' +
-      (store.overlay ? ' text-white' : ' text-black')
-    "
+    class="flex justify-center transition-all"
+    :class="store.overlay ? ' text-white' : ' text-black'"
     data-test="logo"
   >
     <router-link title="Home" to="/" class="flex items-center gap-2">

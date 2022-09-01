@@ -1,6 +1,6 @@
 <template>
   <a
-    href="https://www.youtube.com/channel/UC7dV_5X2kbLohHHUu5Ckdmw"
+    href="https://www.youtube.com/channel/UCwiS4Xhzg6LH_tmIMsfQRcA/"
     target="_blank"
     title="Youtube Channel"
     class="yt inline-block w-[25px] h-[25px] select-none drop-shadow-md"

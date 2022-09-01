@@ -1,7 +1,7 @@
 <template>
   <section
     id="usage"
-    class="flex flex-col items-start w-[1520px] responsive py-5"
+    class="flex flex-col items-start responsive py-5"
   >
     <h1
       @click="toggleUsage"
@@ -24,7 +24,7 @@
         />
       </svg>
     </h1>
-    <p v-show="showUsage" class="text-md select-none text-black w-[300px]">
+    <p v-show="showUsage" class="text-md text-black w-[300px] pb-5">
       All beats are free to use, must credit me in the name of your song:
       <span class="font-semibold">"prod. by s1kebeats"</span>
     </p>
