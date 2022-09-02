@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="flex justify-between items-center responsive"
-  >
+  <div class="flex justify-between items-center responsive">
     <h1 class="text-left text-xl font-semibold mt-5 mb-4 text-black">Beats</h1>
     <div class="flex items-center gap-1">
       <div class="relative">

@@ -90,9 +90,7 @@ watch(
 onMounted(() => {
   const query = route.query as Record<string, string>;
   customFetch(
-    `http://localhost:8000/api/beats/?${new URLSearchParams(
-      query
-    ).toString()}`
+    `http://localhost:8000/api/beats/?${new URLSearchParams(query).toString()}`
   );
 });
 </script>

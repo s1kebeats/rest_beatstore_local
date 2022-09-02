@@ -2,9 +2,7 @@
   <section
     class="landing select-none border-b flex items-center justify-center w-full py-[200px] 930:py-[100px]"
   >
-    <div
-      class="text responsive flex items-center justify-center"
-    >
+    <div class="text responsive flex items-center justify-center">
       <h1 class="text-5xl text-black font-semibold 930:text-3xl">
         Free type beats by
       </h1>

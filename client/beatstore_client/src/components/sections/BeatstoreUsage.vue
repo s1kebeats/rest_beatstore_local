@@ -1,8 +1,5 @@
 <template>
-  <section
-    id="usage"
-    class="flex flex-col items-start responsive py-5"
-  >
+  <section id="usage" class="flex flex-col items-start responsive py-5">
     <h1
       @click="toggleUsage"
       class="cursor-pointer flex items-center gap-[3px] text-left text-xl font-semibold my-5 text-black w-full"

@@ -2,19 +2,7 @@
   <section class="responsive py-5">
     <h1 class="text-left text-xl font-semibold my-5 text-black">Artists</h1>
     <div
-      v-if="!loading"
-      class="flex justify-center gap-5 flex-wrap h-[144px] artistList overflow-hidden"
-    >
-      <router-link
-        :to="`/beats?ordering=-id&artist=${artist.id}`"
-        class="landingArtist select-none w-[134px] h-[134px] rounded-full bg-gradient-to-tr from-[#f3effc] to-primary flex items-center justify-center text-white text-lg shadow-lg hover:from-black hover:to-primary transition-all 930:text-sm"
-        v-for="artist in artistList"
-      >
-        {{ artist.name }}
-      </router-link>
-    </div>
-    <div
-      v-if="loading"
+      v-if="isLoading"
       class="flex justify-center gap-5 flex-wrap h-[144px] artistList overflow-hidden"
     >
       <div
@@ -24,26 +12,29 @@
         <LoadingShimmer class="rounded-full" />
       </div>
     </div>
+    <span v-else-if="isError">Error: {{ error }}</span>
+    <div
+      v-else
+      class="flex justify-center gap-5 flex-wrap h-[144px] artistList overflow-hidden"
+    >
+      <router-link
+        :to="`/beats?ordering=-id&artist=${artist.id}`"
+        class="landingArtist select-none w-[134px] h-[134px] rounded-full bg-gradient-to-tr from-[#f3effc] to-primary flex items-center justify-center text-white text-lg shadow-lg hover:from-black hover:to-primary transition-all 930:text-sm"
+        v-for="artist in data!.data.results.slice(0, 9)"
+      >
+        {{ artist.name }}
+      </router-link>
+    </div>
   </section>
 </template>
 <script setup lang="ts">
 import axios from "axios";
-import { ref, onMounted } from "vue";
 import LoadingShimmer from "@/components/UI/LoadingShimmer.vue";
-// local artist query value
-interface Artist {
-  id: number;
-  name: string;
-}
-const loading = ref(true);
-const artistList = ref<Artist[]>([]);
+import { useQuery } from "vue-query";
 // fetch artists data
-onMounted(async () => {
-  artistList.value = (
-    await axios.get("http://localhost:8000/api/artists/")
-  ).data.results.slice(0, 9);
-  loading.value = false;
-});
+const { isLoading, isError, data, error } = useQuery("artists", () =>
+  axios.get("http://localhost:8000/api/artists/"), { staleTime: 1000 * 60 * 5 }
+);
 </script>
 <style lang="scss">
 .landingArtist {

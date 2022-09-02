@@ -13,15 +13,16 @@
 
     <div class="flex justify-center">
       <BeatList
-        v-show="!loading"
-        :list="bestBeatsList"
-        data-test="beatlist"
-        class="h-[292px] 930:h-[237px] overflow-hidden"
-      />
-      <BeatList
-        v-if="loading"
+        v-if="isLoading"
         :list="[{}, {}, {}, {}, {}, {}, {}]"
         data-test="placeholder"
+        class="h-[292px] 930:h-[237px] overflow-hidden"
+      />
+      <span v-else-if="isError">Error: {{ error }}</span>
+      <BeatList
+        v-else
+        :list="data!.data.results.slice(0, 7)"
+        data-test="beatlist"
         class="h-[292px] 930:h-[237px] overflow-hidden"
       />
     </div>
@@ -44,15 +45,10 @@ interface Beat {
 </script>
 <script setup lang="ts">
 import BeatList from "@/components/UI/BeatList.vue";
-import { onMounted, ref } from "vue";
+import { useQuery } from "vue-query";
 import axios from "axios";
-const loading = ref(true);
-const bestBeatsList = ref<Beat[]>([]);
-onMounted(async () => {
-  loading.value = true;
-  bestBeatsList.value = (
-    await axios.get("http://localhost:8000/api/beats/?ordering=-listenings")
-  ).data.results.slice(0, 7);
-  setTimeout(() => (loading.value = false), 250);
-});
+
+const { isLoading, isError, data, error } = useQuery("mostPopular", () =>
+  axios.get("http://localhost:8000/api/beats/?ordering=-listenings"), { staleTime: 1000 * 60 * 20, cacheTime: 1000 * 60 * 20 }
+);
 </script>
