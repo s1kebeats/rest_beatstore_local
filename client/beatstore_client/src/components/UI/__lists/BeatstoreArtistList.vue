@@ -7,14 +7,8 @@
     :class="artistQuery.includes(artist.id) ? 'bg-black' : 'bg-primary'"
   />
 </template>
-<script lang="ts">
-interface Artist {
-  id?: number | null;
-  name?: string;
-}
-</script>
 <script setup lang="ts">
-import BeatstoreArtist from "@/components/UI/BeatstoreArtist.vue";
+import BeatstoreArtist from "@/components/ui/__artist/BeatstoreArtist.vue";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 const route = useRoute();

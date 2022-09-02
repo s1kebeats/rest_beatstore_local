@@ -14,12 +14,18 @@ import BeatstorePlayer from "@/components/modules/BeatstorePlayer.vue";
 import BeatstoreFooter from "@/components/sections/BeatstoreFooter.vue";
 </script>
 <style lang="scss">
-.main {
-  font-family: "Inter";
-}
 .locked {
   overflow-y: hidden;
 }
+.overlay-enter-active,
+.overlay-leave-active {
+  transition: opacity 0.2s ease;
+}
+.overlay-enter-from,
+.overlay-leave-to {
+  opacity: 0;
+}
+
 .responsive {
   width: 1520px;
   max-width: 1520px;
@@ -48,12 +54,27 @@ import BeatstoreFooter from "@/components/sections/BeatstoreFooter.vue";
     max-width: 310px;
   }
 }
-.overlay-enter-active,
-.overlay-leave-active {
-  transition: opacity 0.2s ease;
-}
-.overlay-enter-from,
-.overlay-leave-to {
-  opacity: 0;
+.artist_landing {
+  width: 134px;
+  height: 134px;
+  @media screen and (max-width: 930px) {
+    width: 100px;
+    height: 100px;
+  }
+  @media screen and (max-width: 525px) {
+    width: 93.3px;
+    height: 93.3px;
+  }
+  &__list {
+    height: 144px;
+    gap: 20px;
+    @media screen and (max-width: 930px) {
+      height: 110px;
+    }
+    @media screen and (max-width: 525px) {
+      height: 103px;
+      gap: 10px;
+    }
+  }
 }
 </style>

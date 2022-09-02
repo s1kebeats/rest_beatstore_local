@@ -22,7 +22,7 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
-import CustomRange from "@/components/UI/CustomRange.vue";
+import CustomRange from "@/components/ui/CustomRange.vue";
 const emit = defineEmits<{
   (e: "updateAudioVolume", value: number): void;
 }>();

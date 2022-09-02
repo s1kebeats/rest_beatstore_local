@@ -11,7 +11,6 @@
     >
       <transition name="overlay">
         <div
-          v-if="beat.wrap"
           data-test="hovered"
           v-show="hovered"
           class="absolute bg-black bg-opacity-80 w-full h-full rounded-lg flex justify-center items-center"
@@ -66,13 +65,11 @@
       </transition>
       <img
         data-test="beatWrap"
-        v-if="beat.wrap"
         :src="beat.wrap"
         class="rounded-lg object-cover w-full h-full shadow-lg"
       />
-      <LoadingShimmer v-else class="rounded-lg box-border mb-3" />
     </div>
-    <div class="flex gap-1 mb-2 select-none" v-if="beat.bpm">
+    <div class="flex gap-1 mb-2 select-none">
       <div
         title="BPM"
         class="flex-1 px-2 h-[20px] text-xs rounded-lg shadow-md bg-black text-white flex justify-center items-center gap-[2px] 930:text-[9px]"
@@ -121,35 +118,15 @@
         </svg>
       </div>
     </div>
-    <LoadingShimmer v-else class="rounded-lg h-[20px] mb-2" />
-    <div v-if="beat.name" class="text-black font-semibold text-2xl">
+    <div class="text-black font-semibold text-2xl">
       {{ beat.name }}
     </div>
-    <div v-if="beat.artist" class="text-black text-sm">
+    <div class="text-black text-sm">
       {{ beat.artist.name }}
     </div>
-    <LoadingShimmer v-else class="rounded-lg h-[52px]" />
   </div>
 </template>
-<script lang="ts">
-interface Artist {
-  id?: number | null;
-  name?: string;
-}
-interface Beat {
-  id?: number | null;
-  name?: string;
-  bpm?: number | null;
-  downloads?: number | null;
-  listenings?: number | null;
-  artist?: Artist;
-  mp3?: string;
-  wave?: string;
-  wrap?: string;
-}
-</script>
 <script setup lang="ts">
-import LoadingShimmer from "@/components/UI/LoadingShimmer.vue";
 import { ref, onMounted, watch } from "vue";
 // global store
 import { useStore } from "@/stores/index";

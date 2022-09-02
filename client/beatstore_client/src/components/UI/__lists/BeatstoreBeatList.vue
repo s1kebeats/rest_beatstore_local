@@ -1,5 +1,5 @@
 <template>
-  <div data-test="beatList" class="flex flex-col w-[1520px] responsive">
+  <div data-test="beatList" class="flex flex-col responsive">
     <div class="flex flex-wrap gap-5" v-show="list.length">
       <BeatstoreBeat
         v-for="item in list"
@@ -16,23 +16,8 @@
     </p>
   </div>
 </template>
-<script lang="ts">
-interface Artist {
-  id?: number | null;
-  name?: string;
-}
-interface Beat {
-  id?: number | null;
-  name?: string;
-  bpm?: number | null;
-  artist?: Artist;
-  mp3?: string;
-  wave?: string;
-  wrap?: string;
-}
-</script>
 <script setup lang="ts">
-import BeatstoreBeat from "@/components/UI/BeatstoreBeat.vue";
+import BeatstoreBeat from "@/components/ui/__beat/BeatstoreBeat.vue";
 const props = defineProps<{
   list: Beat[];
 }>();

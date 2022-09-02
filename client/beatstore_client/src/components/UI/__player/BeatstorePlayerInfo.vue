@@ -24,7 +24,7 @@
             data-test="playerBeatArtist"
             class="bg-primary rounded-md px-1 h-[18px] flex items-center transition-all"
           >
-            {{ beat.artist!.name }}
+            {{ beat.artist.name }}
           </div>
           <div
             title="BPM"
@@ -38,21 +38,6 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-interface Artist {
-  id?: number | null;
-  name?: string;
-}
-interface Beat {
-  id?: number | null;
-  name?: string;
-  bpm?: number | null;
-  artist?: Artist;
-  mp3?: string;
-  wave?: string;
-  wrap?: string;
-}
-</script>
 <script setup lang="ts">
 const props = defineProps<{
   beat: Beat;

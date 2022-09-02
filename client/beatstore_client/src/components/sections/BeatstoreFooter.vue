@@ -16,7 +16,7 @@
   </footer>
 </template>
 <script setup lang="ts">
-import BeatstoreSocials from "@/components/UI/BeatstoreSocials.vue";
+import BeatstoreSocials from "@/components/ui/__socials/BeatstoreSocials.vue";
 import { useStore } from "@/stores";
 const store = useStore();
 </script>

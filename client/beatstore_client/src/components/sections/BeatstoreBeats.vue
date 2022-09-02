@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex-1 flex flex-col items-center py-5 min-h-[calc(100vh-85px)]"
+    class="flex-1 flex flex-col items-center pt-5 pb-[75px] min-h-[calc(100vh-85px)]"
   >
     <BeatstoreSearch @search="updateQuery" />
     <BeatList class="flex-1" v-show="!loading" :list="beatList" />
@@ -22,7 +22,7 @@
 </template>
 <script setup lang="ts">
 import BeatstoreSearch from "@/components/modules/BeatstoreSearch.vue";
-import BeatList from "@/components/UI/BeatList.vue";
+import BeatList from "@/components/ui/BeatList.vue";
 import { ref, watch, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useRouter } from "vue-router";

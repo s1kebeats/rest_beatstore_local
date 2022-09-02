@@ -7,12 +7,6 @@
     {{ artist.name }}
   </button>
 </template>
-<script lang="ts">
-interface Artist {
-  id?: number | null;
-  name?: string;
-}
-</script>
 <script setup lang="ts">
 const emit = defineEmits<{
   (e: "selectArtist", artist: number | null): void;

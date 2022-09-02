@@ -24,9 +24,9 @@
   </BeatstoreOverlay>
 </template>
 <script setup lang="ts">
-import BeatstoreOverlay from "@/components/UI/BeatstoreOverlay.vue";
+import BeatstoreOverlay from "@/components/ui/BeatstoreOverlay.vue";
 import BeatstoreHeader from "@/components/sections/BeatstoreHeader.vue";
-import BeatstoreNav from "@/components/UI/BeatstoreNav.vue";
+import BeatstoreNav from "@/components/ui/BeatstoreNav.vue";
 import BeatstoreFooter from "@/components/sections/BeatstoreFooter.vue";
 // global store
 import { useStore } from "@/stores/index";

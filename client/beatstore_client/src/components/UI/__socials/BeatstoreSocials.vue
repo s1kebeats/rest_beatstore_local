@@ -5,6 +5,6 @@
   </ul>
 </template>
 <script setup lang="ts">
-import VKLink from "@/components/UI/VKLink.vue";
-import YoutubeLink from "@/components/UI/YoutubeLink.vue";
+import VKLink from "@/components/ui/__socials/VKLink.vue";
+import YoutubeLink from "@/components/ui/__socials/YoutubeLink.vue";
 </script>

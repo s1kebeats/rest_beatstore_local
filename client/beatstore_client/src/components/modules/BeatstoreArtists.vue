@@ -13,12 +13,12 @@
   />
 </template>
 <script setup lang="ts">
-import ArtistList from "@/components/UI/ArtistList.vue";
+import ArtistList from "@/components/ui/ArtistList.vue";
 import axios from "axios";
 import { useRoute } from "vue-router";
 import { ref, onMounted } from "vue";
 import { useQuery } from "vue-query";
-import LoadingShimmer from "../UI/LoadingShimmer.vue";
+import LoadingShimmer from "../ui/LoadingShimmer.vue";
 const route = useRoute();
 const emit = defineEmits<{ (e: "updateArtistQuery", query: id[]): void }>();
 // local artist query value

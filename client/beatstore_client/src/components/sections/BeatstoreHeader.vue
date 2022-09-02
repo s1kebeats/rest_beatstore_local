@@ -14,9 +14,9 @@
   </header>
 </template>
 <script setup lang="ts">
-import BeatstoreLogo from "@/components/UI/BeatstoreLogo.vue";
-import BeatstoreNav from "@/components/UI/BeatstoreNav.vue";
-import BeatstoreOverlayButton from "@/components/UI/BeatstoreOverlayButton.vue";
+import BeatstoreLogo from "@/components/ui/BeatstoreLogo.vue";
+import BeatstoreNav from "@/components/ui/BeatstoreNav.vue";
+import BeatstoreOverlayButton from "@/components/ui/BeatstoreOverlayButton.vue";
 import { useStore } from "@/stores";
 const store = useStore();
 </script>

@@ -56,13 +56,13 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted, watch, computed } from "vue";
-import CustomRange from "@/components/UI/CustomRange.vue";
+import CustomRange from "@/components/ui/CustomRange.vue";
 import { timeOutput } from "@/components/functions/timeOutput.js";
 // global store
 import { useStore } from "@/stores/index";
 import { storeToRefs } from "pinia";
-import PlayerInfo from "@/components/UI/PlayerInfo.vue";
-import PlayerVolume from "@/components/UI/PlayerVolume.vue";
+import PlayerInfo from "@/components/ui/__player/BeatstorePlayerInfo.vue";
+import PlayerVolume from "@/components/ui/__player/BeatstorePlayerVolume.vue";
 import axios from "axios";
 const store = useStore();
 // global beat and playing values

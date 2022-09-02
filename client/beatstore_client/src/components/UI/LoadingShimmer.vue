@@ -2,7 +2,7 @@
   <div
     data-test="shimmer"
     title="Loading"
-    class="shimmer overflow-hidden relative w-full h-full bg-base-300"
+    class="shimmer overflow-hidden relative bg-base-300"
   >
     <slot></slot>
   </div>

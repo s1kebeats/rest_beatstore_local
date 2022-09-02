@@ -23,7 +23,7 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import LoadingShimmer from "@/components/UI/LoadingShimmer.vue";
+import LoadingShimmer from "@/components/ui/LoadingShimmer.vue";
 import axios from "axios";
 const YOUTUBE_API_KEY = "AIzaSyDK5cSuQLy3-Q2rYXDSEa4K4PJU5mGLV_0";
 const apiUrl = `https://www.googleapis.com/\

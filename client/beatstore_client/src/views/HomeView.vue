@@ -1,12 +1,12 @@
 <template>
   <BeatstoreLanding />
-  <BestBeats />
-  <ArtistsLanding />
+  <BeatstoreMostPopular />
+  <BeatstoreArtistsLanding />
   <BeatstoreUsage />
 </template>
 <script setup lang="ts">
-import BestBeats from "@/components/sections/BestBeats.vue";
+import BeatstoreMostPopular from "@/components/sections/BeatstoreMostPopular.vue";
 import BeatstoreUsage from "@/components/sections/BeatstoreUsage.vue";
 import BeatstoreLanding from "@/components/sections/BeatstoreLanding.vue";
-import ArtistsLanding from "@/components/sections/ArtistsLanding.vue";
+import BeatstoreArtistsLanding from "@/components/sections/BeatstoreArtistsLanding.vue";
 </script>
