@@ -48,7 +48,9 @@ import BeatList from "@/components/UI/BeatList.vue";
 import { useQuery } from "vue-query";
 import axios from "axios";
 
-const { isLoading, isError, data, error } = useQuery("mostPopular", () =>
-  axios.get("http://localhost:8000/api/beats/?ordering=-listenings"), { staleTime: 1000 * 60 * 20, cacheTime: 1000 * 60 * 20 }
+const { isLoading, isError, data, error } = useQuery(
+  "mostPopular",
+  () => axios.get("http://localhost:8000/api/beats/?ordering=-listenings"),
+  { staleTime: 1000 * 60 * 20, cacheTime: 1000 * 60 * 20 }
 );
 </script>

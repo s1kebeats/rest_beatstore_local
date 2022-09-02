@@ -32,8 +32,10 @@ import axios from "axios";
 import LoadingShimmer from "@/components/UI/LoadingShimmer.vue";
 import { useQuery } from "vue-query";
 // fetch artists data
-const { isLoading, isError, data, error } = useQuery("artists", () =>
-  axios.get("http://localhost:8000/api/artists/"), { staleTime: 1000 * 60 * 5 }
+const { isLoading, isError, data, error } = useQuery(
+  "artists",
+  () => axios.get("http://localhost:8000/api/artists/"),
+  { staleTime: 1000 * 60 * 5 }
 );
 </script>
 <style lang="scss">
