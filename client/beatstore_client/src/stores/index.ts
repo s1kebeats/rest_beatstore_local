@@ -29,9 +29,7 @@ export const useStore = defineStore("main", {
   actions: {
     changeBeat(beat: Beat): void {
       this.beat = beat;
-      axios.get(
-        `https://s1kebeatstore-rest.herokuapp.com/api/beat/${beat.id}/play`
-      );
+      axios.get(`http://localhost:8000/api/beat/${beat.id}/play`);
     },
     playPause(val?: true | false): void {
       if (val) {

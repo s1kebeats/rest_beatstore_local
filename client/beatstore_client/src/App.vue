@@ -25,7 +25,6 @@ import BeatstoreFooter from "@/components/sections/BeatstoreFooter.vue";
 .overlay-leave-to {
   opacity: 0;
 }
-
 .responsive {
   width: 1520px;
   max-width: 1520px;

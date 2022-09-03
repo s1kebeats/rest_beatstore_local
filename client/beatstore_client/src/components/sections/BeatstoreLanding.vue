@@ -2,7 +2,7 @@
   <section
     class="landing select-none border-b flex items-center justify-center w-full py-[200px] 930:py-[100px]"
   >
-    <div class="text responsive flex items-center justify-center">
+    <div class="landing__text responsive flex items-center justify-center">
       <h1 class="text-5xl text-black font-semibold 930:text-3xl">
         Free type beats by
       </h1>
@@ -46,6 +46,15 @@
     rgba(243, 239, 252, 1) 60%,
     rgba(121, 69, 252, 1) 100%
   );
+  &__text {
+    @media screen and (max-width: 1150px) {
+      gap: 56px;
+      flex-direction: column;
+    }
+    @media screen and (max-width: 930px) {
+      gap: 25px;
+    }
+  }
 }
 // .vk {
 //   background: no-repeat url("@/assets/images/vk-black.svg");
@@ -56,13 +65,4 @@
 //   background: center no-repeat url("@/assets/images/youtube-black.svg");
 //   background-size: 23px;
 // }
-.text {
-  @media screen and (max-width: 1150px) {
-    gap: 56px;
-    flex-direction: column;
-  }
-  @media screen and (max-width: 930px) {
-    gap: 25px;
-  }
-}
 </style>

@@ -167,9 +167,7 @@ const setAudioVolume = (newValue: number) => {
   audio.volume = +(newValue / 100).toFixed(2);
 };
 const downloadIncrement = () => {
-  axios.get(
-    `https://s1kebeatstore-rest.herokuapp.com/api/beat/${beat.value.id}/download`
-  );
+  axios.get(`http://localhost:8000/api/beat/${beat.value.id}/download`);
 };
 </script>
 <style lang="scss" scoped>

@@ -1,38 +1,25 @@
 <template>
-  <LoadingShimmer
-    data-test="placeholder"
-    v-if="isLoading"
-    v-for="item in [{}, {}, {}, {}]"
-    class="rounded-lg border-none min-w-[90px] max-w-[110px] h-[24px] flex-1 hover:bg-base-300"
-  />
-  <span v-else-if="isError">Error: {{ error }}</span>
-  <ArtistList
+  <span v-if="isError">Error: {{ error }}</span>
+  <BeatstoreArtistList
     @select-artist="updateArtistQuery"
     v-else
-    :artist-list="data!.data.results"
+    :list="!isLoading ? data!.data.results : null"
   />
 </template>
 <script setup lang="ts">
-import ArtistList from "@/components/ui/ArtistList.vue";
+import BeatstoreArtistList from "@/components/ui/__lists/BeatstoreArtistList.vue";
 import axios from "axios";
 import { useRoute } from "vue-router";
 import { ref, onMounted } from "vue";
 import { useQuery } from "vue-query";
-import LoadingShimmer from "../ui/LoadingShimmer.vue";
 const route = useRoute();
-const emit = defineEmits<{ (e: "updateArtistQuery", query: id[]): void }>();
-// local artist query value
-interface Artist {
-  id: number;
-  name: string;
-}
-type id = number | undefined | null;
-const artistQuery = ref<id[]>(
+const emit = defineEmits<{ (e: "updateArtistQuery", query: number[]): void }>();
+const artistQuery = ref<number[]>(
   route.query.artist && typeof route.query.artist === "string"
     ? route.query.artist.split(",").map((item: string) => +item)
     : []
 );
-const updateArtistQuery = (id: number | null) => {
+const updateArtistQuery = (id: number) => {
   // remove artist from query if query already includes it
   if (artistQuery.value.includes(id))
     artistQuery.value = artistQuery.value.filter((item) => item !== id);

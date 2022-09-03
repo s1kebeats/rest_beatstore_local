@@ -69,7 +69,7 @@ const searchQuery = reactive<searchQuery>({
   artist: [],
 });
 // fires on emit from ArtistList, updates local search query with new artists list
-function updateArtistQuery(list: id[] | []): void {
+function updateArtistQuery(list: number[] | []): void {
   searchQuery.artist = list;
 }
 // interval for debouncing bpm input
@@ -96,7 +96,7 @@ watch(searchQuery, () => {
   const query = <stringQuery>{};
   if (searchQuery.bpm) query.bpm = searchQuery.bpm;
   if (searchQuery.name) query.name = searchQuery.name;
-  if (searchQuery.artist && searchQuery.artist.length) query.artist = searchQuery.artist.join(",");
+  if (searchQuery.artist.length) query.artist = searchQuery.artist.join(",");
   emit("updateSearchQuery", query);
 });
 </script>

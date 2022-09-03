@@ -4,12 +4,7 @@
   >
     <BeatstoreSearch @search="updateQuery" />
     <BeatList class="flex-1" v-show="!loading" :list="beatList" />
-    <BeatList
-      data-test="placeholderList"
-      class="flex-1"
-      v-show="loading"
-      :list="[{}]"
-    />
+    <BeatstoreBeatShimmer class="self-start" v-show="loading" />
     <button
       data-test="loadmoreButton"
       v-show="next"
@@ -22,31 +17,18 @@
 </template>
 <script setup lang="ts">
 import BeatstoreSearch from "@/components/modules/BeatstoreSearch.vue";
-import BeatList from "@/components/ui/BeatList.vue";
+import BeatList from "@/components/ui/__lists/BeatstoreBeatList.vue";
 import { ref, watch, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useRouter } from "vue-router";
 import axios from "axios";
+import BeatstoreBeatShimmer from "@/components/ui/__beat/BeatstoreBeatShimmer.vue";
 
 const router = useRouter();
 const route = useRoute();
 
 // loading state
 const loading = ref(true);
-//types
-interface Artist {
-  id: number;
-  name: string;
-}
-interface Beat {
-  id: number;
-  name: string;
-  bpm: number;
-  artist: Artist;
-  mp3: string;
-  wav: string;
-  wrap: string;
-}
 const next = ref("");
 const beatList = ref<Beat[]>([]);
 

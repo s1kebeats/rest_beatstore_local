@@ -52,7 +52,9 @@ const updateAudioVolume = (value: number): void => {
   emit("updateAudioVolume", audioVolume.value);
 };
 const toggleAudioVolume = (): void => {
+  // mute
   if (audioVolume.value) audioVolume.value = 0;
+  // unmute
   else
     audioVolume.value =
       localStorage.getItem("volume") !== null
@@ -60,7 +62,9 @@ const toggleAudioVolume = (): void => {
         : 100;
   emit("updateAudioVolume", audioVolume.value);
 };
+// changing local storage volume value
 watch(audioVolume, (value) => {
+  // not setting muted value
   if (value) localStorage.setItem("volume", String(value));
 });
 </script>
