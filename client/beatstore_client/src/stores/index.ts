@@ -1,20 +1,6 @@
 import axios from "axios";
 import { defineStore } from "pinia";
 
-interface Artist {
-  id?: number | null;
-  name?: string;
-}
-interface Beat {
-  id?: number | null;
-  name?: string;
-  bpm?: number | null;
-  artist?: Artist;
-  mp3?: string;
-  wave?: string;
-  wrap?: string;
-}
-
 export const useStore = defineStore("main", {
   state: () => {
     return {
@@ -28,7 +14,7 @@ export const useStore = defineStore("main", {
   },
   actions: {
     changeBeat(beat: Beat): void {
-      this.beat = beat;
+      Object.assign(this.beat, beat);
       axios.get(`http://localhost:8000/api/beat/${beat.id}/play`);
     },
     playPause(val?: true | false): void {

@@ -107,14 +107,18 @@ function audioInit(): void {
   store.playPause(true);
 }
 // watching global beat instance to maintain its changing
-watch(beat, (): void => {
-  // pausing audio when global beat changes
-  store.playPause(false);
-  // changing audio source
-  if (typeof beat.value.mp3 === "string") audio.src = beat.value.mp3;
-  // firing audioInit when audio metadata's loaded, turning audio on
-  audio.addEventListener("loadedmetadata", audioInit);
-});
+watch(
+  beat,
+  (): void => {
+    // pausing audio when global beat changes
+    store.playPause(false);
+    // changing audio source
+    if (typeof beat.value.mp3 === "string") audio.src = beat.value.mp3;
+    // firing audioInit when audio metadata's loaded, turning audio on
+    audio.addEventListener("loadedmetadata", audioInit);
+  },
+  { deep: true }
+);
 // current time output interval
 let int: number;
 // watching global playing value to play and pause audio
@@ -122,7 +126,7 @@ watch(playing, (newValue: boolean): void => {
   // if audio is being turned on
   if (newValue) {
     // play
-    audio.play();
+    audio.play().catch((error) => console.log(error));
     // interval which updates current time nad its output
     int = setInterval(() => {
       // if audio ended
