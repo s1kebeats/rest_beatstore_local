@@ -4,7 +4,7 @@
     <span v-if="isError">Error: {{ error }}</span>
     <BeatstoreArtistListLanding
       v-else
-      :list="!isLoading ? data!.data.results.slice(0, 9) : null"
+      :list="!isLoading ? data!.data.results.slice(0, 10) : null"
     />
   </section>
 </template>
